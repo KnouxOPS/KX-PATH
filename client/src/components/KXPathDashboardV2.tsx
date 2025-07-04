@@ -379,7 +379,7 @@ const quickActions: QuickAction[] = [
   },
   {
     id: "3",
-    title_ar: "صيد الفرص",
+    title_ar: "صيد الف��ص",
     title_en: "Hunt Opportunities",
     description_ar: "البحث عن استثمارات جديدة",
     description_en: "Search for new investments",
@@ -598,6 +598,19 @@ export default function KXPathDashboardV2({
       orange: "from-orange-400 to-red-500",
       teal: "from-teal-400 to-cyan-500",
       red: "from-red-400 to-pink-500",
+      coral: "from-red-400 to-rose-500",
+      rose: "from-pink-400 to-rose-500",
+      indigo: "from-indigo-400 to-purple-500",
+      amber: "from-amber-400 to-orange-500",
+      // New gradient combinations
+      "gradient-sunset": "from-amber-400 via-red-500 to-rose-600",
+      "gradient-ocean": "from-blue-400 via-teal-500 to-emerald-600",
+      "gradient-royalty": "from-purple-400 via-indigo-500 to-blue-600",
+      "gradient-nature": "from-emerald-400 via-teal-500 to-amber-400",
+      "gradient-luxury": "from-amber-400 via-yellow-500 to-rose-500",
+      "gradient-innovation": "from-purple-400 via-red-500 to-amber-500",
+      "gradient-serenity": "from-teal-300 via-blue-400 to-indigo-500",
+      "gradient-energy": "from-red-400 via-amber-500 to-yellow-600",
     };
     return colorMap[color] || "from-gray-400 to-gray-600";
   };
