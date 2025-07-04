@@ -114,8 +114,7 @@ const translations = {
     luxuryTerrace: "Luxury Terrace",
     waterFeatures: "Water Features",
     enterDescription: "Describe your vision in detail...",
-    exampleDescription:
-      "Example: Infinity pool surrounded by date palms, smart LED lighting under starry sky, outdoor seating area with water fountain",
+    exampleDescription: "Example: Infinity pool surrounded by date palms, smart LED lighting under starry sky, outdoor seating area with water fountain",
     addColor: "Add Color",
     removeColor: "Remove Color",
     guidanceScale: "Guidance Scale",
@@ -185,15 +184,14 @@ const translations = {
     pool: "مسبح",
     seating: "منطقة جلوس",
     mixed: "مشهد مختلط",
-    infinityPool: "مسبح لا نهائي",
+    infinityPool: "مسبح ل�� نهائي",
     gardenLounge: "صالة الحديقة",
     desertOasis: "واحة صحراوية",
     modernVilla: "فيلا عصرية خارجية",
     luxuryTerrace: "تراس فاخر",
     waterFeatures: "مرافق مائية",
     enterDescription: "صف رؤيتك بالتفصيل...",
-    exampleDescription:
-      "مثال: مسبح لا نهائي محاط بأشجار النخيل، إضاءة LED ذكية تحت سماء مليئة بالنجوم، منطقة جلوس خارجية مع نافورة مائية",
+    exampleDescription: "مثال: مسبح لا نهائي محاط بأشجار النخيل، إضاءة LED ذكية تحت سماء مليئة بالنجوم، منطقة جلوس خارجية مع نافورة مائية",
     addColor: "إضافة لون",
     removeColor: "إزالة لون",
     guidanceScale: "مقياس التوجيه",
@@ -258,8 +256,7 @@ const scenePresets: ScenePreset[] = [
     thumbnail: "/presets/infinity-pool.jpg",
     description_ar: "مسبح لا نهائي مع إطلالة خلابة",
     description_en: "Infinity pool with stunning views",
-    prompt_template:
-      "Ultra-realistic 3D render of an infinity pool with {description}, surrounded by date palms, smart LED lighting, cinematic lighting, HDR, 8K resolution, architectural photography style",
+    prompt_template: "Ultra-realistic 3D render of an infinity pool with {description}, surrounded by date palms, smart LED lighting, cinematic lighting, HDR, 8K resolution, architectural photography style",
   },
   {
     id: "garden-lounge",
@@ -270,8 +267,7 @@ const scenePresets: ScenePreset[] = [
     thumbnail: "/presets/garden-lounge.jpg",
     description_ar: "منطقة جلوس فاخرة في الحديقة",
     description_en: "Luxurious outdoor seating area",
-    prompt_template:
-      "A luxurious outdoor seating area with {description}, lush greenery, ambient LED lighting, photo-realistic, cinematic composition, golden hour lighting",
+    prompt_template: "A luxurious outdoor seating area with {description}, lush greenery, ambient LED lighting, photo-realistic, cinematic composition, golden hour lighting",
   },
   {
     id: "desert-oasis",
@@ -282,8 +278,7 @@ const scenePresets: ScenePreset[] = [
     thumbnail: "/presets/desert-oasis.jpg",
     description_ar: "واحة صحراوية مع مرافق حديثة",
     description_en: "Desert oasis with modern amenities",
-    prompt_template:
-      "Desert oasis landscape featuring {description}, native desert plants, sustainable design, sand dunes backdrop, warm sunset lighting, ultra-realistic rendering",
+    prompt_template: "Desert oasis landscape featuring {description}, native desert plants, sustainable design, sand dunes backdrop, warm sunset lighting, ultra-realistic rendering",
   },
   {
     id: "modern-terrace",
@@ -294,8 +289,7 @@ const scenePresets: ScenePreset[] = [
     thumbnail: "/presets/modern-terrace.jpg",
     description_ar: "تراس عصري مع أثاث أنيق",
     description_en: "Modern terrace with elegant furniture",
-    prompt_template:
-      "Modern rooftop terrace with {description}, sleek furniture, city skyline view, contemporary design, dramatic lighting, architectural visualization",
+    prompt_template: "Modern rooftop terrace with {description}, sleek furniture, city skyline view, contemporary design, dramatic lighting, architectural visualization",
   },
   {
     id: "water-features",
@@ -306,8 +300,7 @@ const scenePresets: ScenePreset[] = [
     thumbnail: "/presets/water-features.jpg",
     description_ar: "تصميم مع مرافق مائية متنوعة",
     description_en: "Design with various water features",
-    prompt_template:
-      "Landscape design with multiple water features including {description}, fountains, waterfalls, reflecting pools, zen garden style, peaceful atmosphere",
+    prompt_template: "Landscape design with multiple water features including {description}, fountains, waterfalls, reflecting pools, zen garden style, peaceful atmosphere",
   },
 ];
 
@@ -357,29 +350,13 @@ const aiModels: AIModel[] = [
 
 // Color Palette
 const defaultColors = [
-  "#2C5F2D",
-  "#97BC62",
-  "#F4E4BC",
-  "#FFFFFF",
-  "#8B4513",
-  "#228B22",
-  "#4169E1",
-  "#FFD700",
-  "#FF6347",
-  "#9370DB",
-  "#20B2AA",
-  "#F0E68C",
+  "#2C5F2D", "#97BC62", "#F4E4BC", "#FFFFFF", "#8B4513", "#228B22",
+  "#4169E1", "#FFD700", "#FF6347", "#9370DB", "#20B2AA", "#F0E68C"
 ];
 
-export default function KnoxDesignGenerator({
-  language,
-}: KnoxDesignGeneratorProps) {
-  const [activeStep, setActiveStep] = useState<
-    "setup" | "generating" | "results"
-  >("setup");
-  const [selectedPreset, setSelectedPreset] = useState<ScenePreset | null>(
-    null,
-  );
+export default function KnoxDesignGenerator({ language }: KnoxDesignGeneratorProps) {
+  const [activeStep, setActiveStep] = useState<"setup" | "generating" | "results">("setup");
+  const [selectedPreset, setSelectedPreset] = useState<ScenePreset | null>(null);
   const [formData, setFormData] = useState({
     sceneType: "mixed",
     description: "",
@@ -396,23 +373,46 @@ export default function KnoxDesignGenerator({
   });
   const [isGenerating, setIsGenerating] = useState(false);
   const [generationStep, setGenerationStep] = useState("");
-  const [generatedDesigns, setGeneratedDesigns] = useState<GeneratedDesign[]>(
-    [],
-  );
-  const [selectedDesign, setSelectedDesign] = useState<GeneratedDesign | null>(
-    null,
-  );
+  const [generatedDesigns, setGeneratedDesigns] = useState<GeneratedDesign[]>([]);
+  const [selectedDesign, setSelectedDesign] = useState<GeneratedDesign | null>(null);
   const [newColor, setNewColor] = useState("#2C5F2D");
+  const [availableModels, setAvailableModels] = useState<AIModel[]>(aiModels);
+  const [modelsLoading, setModelsLoading] = useState(false);
 
   const t = translations[language];
   const isRTL = language === "ar";
+
+  // Load available models from backend
+  const loadModels = async () => {
+    setModelsLoading(true);
+    try {
+      const response = await fetch("/api/ai/models");
+      if (response.ok) {
+        const data = await response.json();
+        setAvailableModels(data.models);
+      }
+    } catch (error) {
+      console.error("Failed to load models:", error);
+      // Keep using default models if API fails
+    }
+    setModelsLoading(false);
+  };
+
+  useEffect(() => {
+    loadModels();
+  }, []);
 
   // AI Generation Process with Backend API
   const generateDesign = async () => {
     setIsGenerating(true);
     setActiveStep("generating");
 
-    const steps = [t.analyzing, t.optimizing, t.rendering, t.finalizing];
+    const steps = [
+      t.analyzing,
+      t.optimizing,
+      t.rendering,
+      t.finalizing,
+    ];
 
     try {
       // Prepare request data
@@ -435,9 +435,7 @@ export default function KnoxDesignGenerator({
       // Simulate generation steps for UX
       for (let i = 0; i < steps.length; i++) {
         setGenerationStep(steps[i]);
-        await new Promise((resolve) =>
-          setTimeout(resolve, 1000 + Math.random() * 500),
-        );
+        await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 500));
       }
 
       // Call backend API
@@ -459,14 +457,12 @@ export default function KnoxDesignGenerator({
       if (result.success) {
         const newDesign: GeneratedDesign = {
           ...result.design,
-          title: selectedPreset
-            ? language === "ar"
-              ? selectedPreset.name_ar
-              : selectedPreset.name_en
-            : `Custom ${formData.sceneType} design`,
+          title: selectedPreset ?
+            (language === "ar" ? selectedPreset.name_ar : selectedPreset.name_en) :
+            `Custom ${formData.sceneType} design`,
         };
 
-        setGeneratedDesigns((prev) => [newDesign, ...prev]);
+        setGeneratedDesigns(prev => [newDesign, ...prev]);
         setSelectedDesign(newDesign);
         setActiveStep("results");
 
@@ -475,20 +471,17 @@ export default function KnoxDesignGenerator({
       } else {
         throw new Error("Generation failed");
       }
+
     } catch (error) {
       console.error("Generation error:", error);
-      setGenerationStep(
-        error instanceof Error ? error.message : "Generation failed",
-      );
+      setGenerationStep(error instanceof Error ? error.message : "Generation failed");
 
       // For demo purposes, create a mock design on error
       const mockDesign: GeneratedDesign = {
         id: Date.now().toString(),
-        title: selectedPreset
-          ? language === "ar"
-            ? selectedPreset.name_ar
-            : selectedPreset.name_en
-          : `Custom ${formData.sceneType} design`,
+        title: selectedPreset ?
+          (language === "ar" ? selectedPreset.name_ar : selectedPreset.name_en) :
+          `Custom ${formData.sceneType} design`,
         prompt: formData.description,
         image_url: `/generated/demo-design-${Date.now()}.jpg`,
         style: formData.style,
@@ -497,20 +490,17 @@ export default function KnoxDesignGenerator({
         colors: formData.colors,
         timestamp: new Date().toISOString(),
         status: "completed",
-        ai_model:
-          aiModels.find((m) => m.id === generationSettings.selectedModel)
-            ?.name || "Demo Model",
+        ai_model: aiModels.find(m => m.id === generationSettings.selectedModel)?.name || "Demo Model",
         generation_time: 12.5,
         settings: {
           guidance_scale: generationSettings.guidanceScale,
           num_inference_steps: generationSettings.inferenceSteps,
-          seed: generationSettings.useRandomSeed
-            ? Math.floor(Math.random() * 1000000)
-            : generationSettings.seed,
+          seed: generationSettings.useRandomSeed ?
+            Math.floor(Math.random() * 1000000) : generationSettings.seed,
         },
       };
 
-      setGeneratedDesigns((prev) => [mockDesign, ...prev]);
+      setGeneratedDesigns(prev => [mockDesign, ...prev]);
       setSelectedDesign(mockDesign);
       setActiveStep("results");
 
@@ -524,17 +514,17 @@ export default function KnoxDesignGenerator({
 
   const addColor = () => {
     if (!formData.colors.includes(newColor)) {
-      setFormData((prev) => ({
+      setFormData(prev => ({
         ...prev,
-        colors: [...prev.colors, newColor],
+        colors: [...prev.colors, newColor]
       }));
     }
   };
 
   const removeColor = (color: string) => {
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
-      colors: prev.colors.filter((c) => c !== color),
+      colors: prev.colors.filter(c => c !== color)
     }));
   };
 
@@ -550,9 +540,7 @@ export default function KnoxDesignGenerator({
     setActiveStep("setup");
   };
 
-  const selectedModel = aiModels.find(
-    (m) => m.id === generationSettings.selectedModel,
-  );
+  const selectedModel = availableModels.find(m => m.id === generationSettings.selectedModel);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900 to-green-900 text-white p-6">
@@ -576,27 +564,21 @@ export default function KnoxDesignGenerator({
             { id: "results", icon: ImageIcon, label: "Results" },
           ].map((step, index) => (
             <div key={step.id} className="flex items-center">
-              <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center border-2 ${
-                  activeStep === step.id
-                    ? "bg-emerald-500 border-emerald-400 text-white"
-                    : index <
-                        ["setup", "generating", "results"].indexOf(activeStep)
-                      ? "bg-emerald-600 border-emerald-500 text-white"
-                      : "border-gray-400 text-gray-400"
-                }`}
-              >
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center border-2 ${
+                activeStep === step.id
+                  ? "bg-emerald-500 border-emerald-400 text-white"
+                  : index < ["setup", "generating", "results"].indexOf(activeStep)
+                  ? "bg-emerald-600 border-emerald-500 text-white"
+                  : "border-gray-400 text-gray-400"
+              }`}>
                 <step.icon className="w-5 h-5" />
               </div>
               {index < 2 && (
-                <div
-                  className={`w-16 h-0.5 mx-2 ${
-                    index <
-                    ["setup", "generating", "results"].indexOf(activeStep)
-                      ? "bg-emerald-500"
-                      : "bg-gray-400"
-                  }`}
-                />
+                <div className={`w-16 h-0.5 mx-2 ${
+                  index < ["setup", "generating", "results"].indexOf(activeStep)
+                    ? "bg-emerald-500"
+                    : "bg-gray-400"
+                }`} />
               )}
             </div>
           ))}
@@ -617,10 +599,7 @@ export default function KnoxDesignGenerator({
                   key={preset.id}
                   onClick={() => {
                     setSelectedPreset(preset);
-                    setFormData((prev) => ({
-                      ...prev,
-                      sceneType: preset.category,
-                    }));
+                    setFormData(prev => ({ ...prev, sceneType: preset.category }));
                   }}
                   className={`cursor-pointer rounded-xl p-4 border-2 transition-all hover:scale-105 ${
                     selectedPreset?.id === preset.id
@@ -629,22 +608,18 @@ export default function KnoxDesignGenerator({
                   }`}
                 >
                   <div className="text-center space-y-3">
-                    <div
-                      className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto ${
-                        selectedPreset?.id === preset.id
-                          ? "bg-emerald-500"
-                          : "bg-gradient-to-br from-blue-400 to-purple-600"
-                      }`}
-                    >
+                    <div className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto ${
+                      selectedPreset?.id === preset.id
+                        ? "bg-emerald-500"
+                        : "bg-gradient-to-br from-blue-400 to-purple-600"
+                    }`}>
                       <preset.icon className="w-8 h-8 text-white" />
                     </div>
                     <h4 className="font-medium">
                       {language === "ar" ? preset.name_ar : preset.name_en}
                     </h4>
                     <p className="text-xs text-gray-300">
-                      {language === "ar"
-                        ? preset.description_ar
-                        : preset.description_en}
+                      {language === "ar" ? preset.description_ar : preset.description_en}
                     </p>
                   </div>
                 </div>
@@ -654,26 +629,17 @@ export default function KnoxDesignGenerator({
 
           {/* Custom Description Form */}
           <div className="bg-white/10 backdrop-blur-xl rounded-xl p-6 border border-white/20">
-            <h3 className="text-xl font-semibold mb-4">
-              {t.customDescription}
-            </h3>
+            <h3 className="text-xl font-semibold mb-4">{t.customDescription}</h3>
             <p className="text-emerald-300 mb-6">{t.orCustom}</p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="space-y-6">
                 {/* Scene Type */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    {t.sceneType}
-                  </label>
+                  <label className="block text-sm font-medium mb-2">{t.sceneType}</label>
                   <select
                     value={formData.sceneType}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        sceneType: e.target.value,
-                      }))
-                    }
+                    onChange={(e) => setFormData(prev => ({ ...prev, sceneType: e.target.value }))}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     <option value="garden">{t.garden}</option>
@@ -685,40 +651,24 @@ export default function KnoxDesignGenerator({
 
                 {/* Detailed Description */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    {t.detailedDescription}
-                  </label>
+                  <label className="block text-sm font-medium mb-2">{t.detailedDescription}</label>
                   <textarea
                     value={formData.description}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        description: e.target.value,
-                      }))
-                    }
+                    onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                     rows={6}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     placeholder={t.enterDescription}
                   />
-                  <p className="text-xs text-gray-400 mt-2">
-                    {t.exampleDescription}
-                  </p>
+                  <p className="text-xs text-gray-400 mt-2">{t.exampleDescription}</p>
                 </div>
 
                 {/* Area Size */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    {t.areaSize}
-                  </label>
+                  <label className="block text-sm font-medium mb-2">{t.areaSize}</label>
                   <input
                     type="number"
                     value={formData.areaSqm}
-                    onChange={(e) =>
-                      setFormData((prev) => ({
-                        ...prev,
-                        areaSqm: parseInt(e.target.value) || 100,
-                      }))
-                    }
+                    onChange={(e) => setFormData(prev => ({ ...prev, areaSqm: parseInt(e.target.value) || 100 }))}
                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     min="10"
                     max="10000"
@@ -729,21 +679,12 @@ export default function KnoxDesignGenerator({
               <div className="space-y-6">
                 {/* Style Selection */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    {t.style}
-                  </label>
+                  <label className="block text-sm font-medium mb-2">{t.style}</label>
                   <div className="grid grid-cols-2 gap-2">
-                    {[
-                      "realistic",
-                      "artistic",
-                      "cinematic",
-                      "architectural",
-                    ].map((style) => (
+                    {["realistic", "artistic", "cinematic", "architectural"].map((style) => (
                       <button
                         key={style}
-                        onClick={() =>
-                          setFormData((prev) => ({ ...prev, style }))
-                        }
+                        onClick={() => setFormData(prev => ({ ...prev, style }))}
                         className={`p-3 rounded-lg text-sm transition-all ${
                           formData.style === style
                             ? "bg-emerald-500 text-white"
@@ -758,9 +699,7 @@ export default function KnoxDesignGenerator({
 
                 {/* Preferred Colors */}
                 <div>
-                  <label className="block text-sm font-medium mb-2">
-                    {t.preferredColors}
-                  </label>
+                  <label className="block text-sm font-medium mb-2">{t.preferredColors}</label>
 
                   {/* Color Input */}
                   <div className="flex gap-2 mb-3">
@@ -777,11 +716,7 @@ export default function KnoxDesignGenerator({
                       className="flex-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                       placeholder="#2C5F2D"
                     />
-                    <Button
-                      onClick={addColor}
-                      size="sm"
-                      className="bg-emerald-600 hover:bg-emerald-700"
-                    >
+                    <Button onClick={addColor} size="sm" className="bg-emerald-600 hover:bg-emerald-700">
                       <Plus className="w-4 h-4" />
                     </Button>
                   </div>
@@ -793,10 +728,7 @@ export default function KnoxDesignGenerator({
                         key={color}
                         onClick={() => {
                           if (!formData.colors.includes(color)) {
-                            setFormData((prev) => ({
-                              ...prev,
-                              colors: [...prev.colors, color],
-                            }));
+                            setFormData(prev => ({ ...prev, colors: [...prev.colors, color] }));
                           }
                         }}
                         className="w-10 h-10 rounded-lg border-2 border-white/20 hover:border-white/40 transition-all"
@@ -809,9 +741,7 @@ export default function KnoxDesignGenerator({
                   {/* Selected Colors */}
                   {formData.colors.length > 0 && (
                     <div>
-                      <p className="text-sm text-gray-300 mb-2">
-                        Selected Colors:
-                      </p>
+                      <p className="text-sm text-gray-300 mb-2">Selected Colors:</p>
                       <div className="flex flex-wrap gap-2">
                         {formData.colors.map((color) => (
                           <div
@@ -846,19 +776,18 @@ export default function KnoxDesignGenerator({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Model Selection */}
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.aiModel}
-                </label>
+                <label className="block text-sm font-medium mb-2">{t.aiModel}</label>
                 <div className="space-y-3">
-                  {aiModels.map((model) => (
+                  {modelsLoading ? (
+                    <div className="text-center py-4">
+                      <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2" />
+                      <p className="text-sm text-gray-400">Loading AI models...</p>
+                    </div>
+                  ) : (
+                  availableModels.map((model) => (
                     <div
                       key={model.id}
-                      onClick={() =>
-                        setGenerationSettings((prev) => ({
-                          ...prev,
-                          selectedModel: model.id,
-                        }))
-                      }
+                      onClick={() => setGenerationSettings(prev => ({ ...prev, selectedModel: model.id }))}
                       className={`cursor-pointer p-4 rounded-lg border transition-all ${
                         generationSettings.selectedModel === model.id
                           ? "border-emerald-400 bg-emerald-500/20"
@@ -868,15 +797,11 @@ export default function KnoxDesignGenerator({
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-medium">{model.name}</h4>
                         <div className="flex gap-2">
-                          <Badge
-                            className={`${
-                              model.provider === "huggingface"
-                                ? "bg-yellow-500/20 text-yellow-400"
-                                : model.provider === "replicate"
-                                  ? "bg-blue-500/20 text-blue-400"
-                                  : "bg-green-500/20 text-green-400"
-                            }`}
-                          >
+                          <Badge className={`${
+                            model.provider === "huggingface" ? "bg-yellow-500/20 text-yellow-400" :
+                            model.provider === "replicate" ? "bg-blue-500/20 text-blue-400" :
+                            "bg-green-500/20 text-green-400"
+                          }`}>
                             {model.provider}
                           </Badge>
                           <Badge className="bg-green-500/20 text-green-400">
@@ -884,9 +809,7 @@ export default function KnoxDesignGenerator({
                           </Badge>
                         </div>
                       </div>
-                      <p className="text-sm text-gray-300 mb-2">
-                        {model.description}
-                      </p>
+                      <p className="text-sm text-gray-300 mb-2">{model.description}</p>
                       <div className="flex gap-4 text-xs text-gray-400">
                         <span>Speed: {model.speed}</span>
                         <span>Quality: {model.quality}</span>
@@ -898,9 +821,7 @@ export default function KnoxDesignGenerator({
 
               {/* Generation Settings */}
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.generationSettings}
-                </label>
+                <label className="block text-sm font-medium mb-2">{t.generationSettings}</label>
                 <div className="space-y-4">
                   {/* Guidance Scale */}
                   <div>
@@ -913,12 +834,10 @@ export default function KnoxDesignGenerator({
                       max="20"
                       step="0.5"
                       value={generationSettings.guidanceScale}
-                      onChange={(e) =>
-                        setGenerationSettings((prev) => ({
-                          ...prev,
-                          guidanceScale: parseFloat(e.target.value),
-                        }))
-                      }
+                      onChange={(e) => setGenerationSettings(prev => ({
+                        ...prev,
+                        guidanceScale: parseFloat(e.target.value)
+                      }))}
                       className="w-full"
                     />
                   </div>
@@ -934,12 +853,10 @@ export default function KnoxDesignGenerator({
                       max="100"
                       step="5"
                       value={generationSettings.inferenceSteps}
-                      onChange={(e) =>
-                        setGenerationSettings((prev) => ({
-                          ...prev,
-                          inferenceSteps: parseInt(e.target.value),
-                        }))
-                      }
+                      onChange={(e) => setGenerationSettings(prev => ({
+                        ...prev,
+                        inferenceSteps: parseInt(e.target.value)
+                      }))}
                       className="w-full"
                     />
                   </div>
@@ -950,28 +867,22 @@ export default function KnoxDesignGenerator({
                       <input
                         type="checkbox"
                         checked={generationSettings.useRandomSeed}
-                        onChange={(e) =>
-                          setGenerationSettings((prev) => ({
-                            ...prev,
-                            useRandomSeed: e.target.checked,
-                          }))
-                        }
+                        onChange={(e) => setGenerationSettings(prev => ({
+                          ...prev,
+                          useRandomSeed: e.target.checked
+                        }))}
                         className="w-4 h-4"
                       />
-                      <label className="text-sm text-gray-300">
-                        {t.useRandomSeed}
-                      </label>
+                      <label className="text-sm text-gray-300">{t.useRandomSeed}</label>
                     </div>
                     {!generationSettings.useRandomSeed && (
                       <input
                         type="number"
                         value={generationSettings.seed}
-                        onChange={(e) =>
-                          setGenerationSettings((prev) => ({
-                            ...prev,
-                            seed: parseInt(e.target.value) || 0,
-                          }))
-                        }
+                        onChange={(e) => setGenerationSettings(prev => ({
+                          ...prev,
+                          seed: parseInt(e.target.value) || 0
+                        }))}
                         className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                         placeholder="Random seed"
                       />
@@ -994,11 +905,11 @@ export default function KnoxDesignGenerator({
             </Button>
             <Button
               onClick={() => {
-                setFormData((prev) => ({
+                setFormData(prev => ({
                   ...prev,
-                  description: selectedPreset
-                    ? `${selectedPreset.description_en} with smart features and LED lighting`
-                    : "Infinity pool surrounded by date palms, smart LED lighting under starry sky, outdoor seating area with water fountain",
+                  description: selectedPreset ?
+                    `${selectedPreset.description_en} with smart features and LED lighting` :
+                    "Infinity pool surrounded by date palms, smart LED lighting under starry sky, outdoor seating area with water fountain"
                 }));
                 generateDesign();
               }}
@@ -1024,10 +935,7 @@ export default function KnoxDesignGenerator({
             </div>
 
             <div className="w-full bg-gray-700 rounded-full h-3">
-              <div
-                className="bg-emerald-500 h-3 rounded-full animate-pulse"
-                style={{ width: "75%" }}
-              />
+              <div className="bg-emerald-500 h-3 rounded-full animate-pulse" style={{ width: "75%" }} />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
@@ -1037,15 +945,11 @@ export default function KnoxDesignGenerator({
               </div>
               <div className="bg-white/5 rounded-lg p-4">
                 <div className="font-medium">{t.inferenceSteps}</div>
-                <div className="text-emerald-400">
-                  {generationSettings.inferenceSteps}
-                </div>
+                <div className="text-emerald-400">{generationSettings.inferenceSteps}</div>
               </div>
               <div className="bg-white/5 rounded-lg p-4">
                 <div className="font-medium">{t.guidanceScale}</div>
-                <div className="text-emerald-400">
-                  {generationSettings.guidanceScale}
-                </div>
+                <div className="text-emerald-400">{generationSettings.guidanceScale}</div>
               </div>
             </div>
 
@@ -1071,18 +975,12 @@ export default function KnoxDesignGenerator({
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* Design Preview */}
                 <div>
-                  <h3 className="text-xl font-semibold mb-4">
-                    {selectedDesign.title}
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-4">{selectedDesign.title}</h3>
                   <div className="aspect-video bg-gradient-to-br from-emerald-400/20 to-green-600/20 rounded-lg flex items-center justify-center border border-emerald-400/30">
                     <div className="text-center">
                       <ImageIcon className="w-16 h-16 text-emerald-400 mx-auto mb-2" />
-                      <p className="text-emerald-300">
-                        Generated Design Preview
-                      </p>
-                      <p className="text-sm text-gray-400 mt-2">
-                        {selectedDesign.image_url}
-                      </p>
+                      <p className="text-emerald-300">Generated Design Preview</p>
+                      <p className="text-sm text-gray-400 mt-2">{selectedDesign.image_url}</p>
                     </div>
                   </div>
 
@@ -1114,22 +1012,17 @@ export default function KnoxDesignGenerator({
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span>{t.aiModel}:</span>
-                        <span className="text-emerald-400">
-                          {selectedDesign.ai_model}
-                        </span>
+                        <span className="text-emerald-400">{selectedDesign.ai_model}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>{t.generationTime}:</span>
                         <span className="text-emerald-400">
-                          {selectedDesign.generation_time.toFixed(1)}{" "}
-                          {t.seconds}
+                          {selectedDesign.generation_time.toFixed(1)} {t.seconds}
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span>{t.style}:</span>
-                        <span className="text-emerald-400">
-                          {selectedDesign.style}
-                        </span>
+                        <span className="text-emerald-400">{selectedDesign.style}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>{t.resolution}:</span>
@@ -1140,9 +1033,7 @@ export default function KnoxDesignGenerator({
 
                   <div className="bg-white/5 rounded-lg p-4">
                     <h4 className="font-semibold mb-2">Prompt Used</h4>
-                    <p className="text-sm text-gray-300 break-words">
-                      {selectedDesign.prompt}
-                    </p>
+                    <p className="text-sm text-gray-300 break-words">{selectedDesign.prompt}</p>
                   </div>
 
                   <div className="bg-white/5 rounded-lg p-4">
@@ -1150,30 +1041,22 @@ export default function KnoxDesignGenerator({
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
                         <span>Guidance Scale:</span>
-                        <span className="text-emerald-400">
-                          {selectedDesign.settings.guidance_scale}
-                        </span>
+                        <span className="text-emerald-400">{selectedDesign.settings.guidance_scale}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Inference Steps:</span>
-                        <span className="text-emerald-400">
-                          {selectedDesign.settings.num_inference_steps}
-                        </span>
+                        <span className="text-emerald-400">{selectedDesign.settings.num_inference_steps}</span>
                       </div>
                       <div className="flex justify-between">
                         <span>Seed:</span>
-                        <span className="text-emerald-400">
-                          {selectedDesign.settings.seed}
-                        </span>
+                        <span className="text-emerald-400">{selectedDesign.settings.seed}</span>
                       </div>
                     </div>
                   </div>
 
                   {selectedDesign.colors.length > 0 && (
                     <div className="bg-white/5 rounded-lg p-4">
-                      <h4 className="font-semibold mb-2">
-                        {t.preferredColors}
-                      </h4>
+                      <h4 className="font-semibold mb-2">{t.preferredColors}</h4>
                       <div className="flex flex-wrap gap-2">
                         {selectedDesign.colors.map((color, index) => (
                           <div
@@ -1216,22 +1099,14 @@ export default function KnoxDesignGenerator({
                       <ImageIcon className="w-8 h-8 text-emerald-400" />
                     </div>
                     <div className="p-3">
-                      <h4 className="font-medium text-sm mb-1">
-                        {design.title}
-                      </h4>
-                      <p className="text-xs text-gray-400 mb-2">
-                        {design.ai_model}
-                      </p>
+                      <h4 className="font-medium text-sm mb-1">{design.title}</h4>
+                      <p className="text-xs text-gray-400 mb-2">{design.ai_model}</p>
                       <div className="flex justify-between items-center">
-                        <Badge
-                          className={`text-xs ${
-                            design.status === "completed"
-                              ? "bg-green-500/20 text-green-400"
-                              : design.status === "approved"
-                                ? "bg-emerald-500/20 text-emerald-400"
-                                : "bg-gray-500/20 text-gray-400"
-                          }`}
-                        >
+                        <Badge className={`text-xs ${
+                          design.status === "completed" ? "bg-green-500/20 text-green-400" :
+                          design.status === "approved" ? "bg-emerald-500/20 text-emerald-400" :
+                          "bg-gray-500/20 text-gray-400"
+                        }`}>
                           {design.status}
                         </Badge>
                         <span className="text-xs text-gray-400">
