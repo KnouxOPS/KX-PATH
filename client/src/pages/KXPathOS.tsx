@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Globe } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import GlassLogo from "@/components/GlassLogo";
