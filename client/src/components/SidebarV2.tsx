@@ -70,7 +70,7 @@ const translations = {
     coreModules: "Core Modules",
     intelligenceTools: "Intelligence Tools",
     designStudio: "Design Studio",
-    projectManagement: "Project Management",
+    projectSection: "Project Management",
     systemTools: "System Tools",
     settings: "Settings",
     help: "Help & Support",
