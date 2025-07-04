@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
+import SidebarV2 from "@/components/SidebarV2";
 import Header from "@/components/Header";
 import KXPathDashboard from "@/components/KXPathDashboard";
+import KXPathDashboardV2 from "@/components/KXPathDashboardV2";
 import SmartServicesHub from "@/components/SmartServicesHub";
 import AIDesignHub from "@/components/AIDesignHub";
 import LiveMarketData from "@/components/LiveMarketData";
@@ -16,6 +18,12 @@ import EpicSplash from "@/components/EpicSplash";
 import UAESmartMap from "@/components/UAESmartMap";
 import SmartUAERadar from "@/components/SmartUAERadar";
 import SmartOpportunityHunter from "@/components/SmartOpportunityHunter";
+import UAESmartMapEnhanced from "@/components/UAESmartMapEnhanced";
+import SmartOpportunityHunterEnhanced from "@/components/SmartOpportunityHunterEnhanced";
+import CompetitiveIntelligence from "@/components/CompetitiveIntelligence";
+import AIDesignStudioEnhanced from "@/components/AIDesignStudioEnhanced";
+import MarketAnalysisValidation from "@/components/MarketAnalysisValidation";
+import KXPathSystemReport from "@/components/KXPathSystemReport";
 
 export default function KXPathOS() {
   const [language, setLanguage] = useState<"en" | "ar">("ar");
@@ -39,7 +47,9 @@ export default function KXPathOS() {
       case "services":
         return <SmartServicesHub language={language} userRole={userRole} />;
       case "ai-hub":
-        return <AIDesignHub language={language} />;
+        return <AIDesignStudioEnhanced language={language} />;
+      case "ai-design":
+        return <AIDesignStudioEnhanced language={language} />;
       case "market-data":
         return <LiveMarketData language={language} />;
       case "smart-sniper":
@@ -47,9 +57,17 @@ export default function KXPathOS() {
       case "uae-radar":
         return <SmartUAERadar language={language} />;
       case "uae-map":
-        return <UAESmartMap language={language} />;
+        return <UAESmartMapEnhanced language={language} />;
+      case "smart-map":
+        return <UAESmartMapEnhanced language={language} />;
       case "opportunity-hunter":
-        return <SmartOpportunityHunter language={language} />;
+        return <SmartOpportunityHunterEnhanced language={language} />;
+      case "competitive-intel":
+        return <CompetitiveIntelligence language={language} />;
+      case "market-analysis":
+        return <MarketAnalysisValidation language={language} />;
+      case "real-time-monitoring":
+        return <SmartUAERadar language={language} />;
       case "projects":
         return <ProjectManagement language={language} userRole={userRole} />;
       case "live-feed":
@@ -62,8 +80,10 @@ export default function KXPathOS() {
         return <ResearcherHub language={language} />;
       case "field":
         return <FieldTeamDashboard language={language} />;
+      case "system-report":
+        return <KXPathSystemReport language={language} />;
       default:
-        return <KXPathDashboard language={language} userRole={userRole} />;
+        return <KXPathDashboardV2 language={language} userRole={userRole} />;
     }
   };
 
@@ -132,7 +152,7 @@ export default function KXPathOS() {
       </div>
 
       <div className="relative z-10 flex">
-        <Sidebar
+        <SidebarV2
           language={language}
           activeModule={activeModule}
           onModuleChange={setActiveModule}
@@ -140,7 +160,7 @@ export default function KXPathOS() {
           userRole={userRole}
         />
 
-        <div className="flex-1 ml-[273px]">
+        <div className="flex-1 pl-80">
           <Header
             language={language}
             onToggleLanguage={toggleLanguage}
