@@ -282,7 +282,7 @@ const dashboardMetrics: DashboardMetric[] = [
     trend: "up",
     icon: Building2,
     color: "emerald",
-    description_ar: "مشاريع التنسيق النشطة في الإمارات",
+    description_ar: "مشاريع ��لتنسيق النشطة في الإمارات",
     description_en: "Active landscaping projects across UAE",
     priority: "high",
   },
@@ -353,7 +353,7 @@ const dashboardMetrics: DashboardMetric[] = [
   },
 ];
 
-// Quick Actions based on Figma design
+// Quick Actions with Enhanced Harmonious Colors
 const quickActions: QuickAction[] = [
   {
     id: "1",
@@ -362,7 +362,7 @@ const quickActions: QuickAction[] = [
     description_ar: "إنشاء تصاميم مناظر طبيعية مخصصة",
     description_en: "Create custom landscape designs",
     icon: Sparkles,
-    color: "emerald",
+    color: "gradient-innovation",
     action: "ai-design",
     category: "ai",
   },
@@ -373,7 +373,7 @@ const quickActions: QuickAction[] = [
     description_ar: "تصفح الفرص في الإمارات",
     description_en: "Browse opportunities across UAE",
     icon: MapPin,
-    color: "blue",
+    color: "gradient-ocean",
     action: "smart-map",
     category: "map",
   },
@@ -384,7 +384,7 @@ const quickActions: QuickAction[] = [
     description_ar: "البحث عن استثمارات جديدة",
     description_en: "Search for new investments",
     icon: Radar,
-    color: "purple",
+    color: "gradient-royalty",
     action: "opportunity-hunter",
     category: "analysis",
   },
@@ -395,7 +395,7 @@ const quickActions: QuickAction[] = [
     description_ar: "رؤى حول المنافسين في السوق",
     description_en: "Insights on market competitors",
     icon: Eye,
-    color: "orange",
+    color: "gradient-energy",
     action: "competitive-intel",
     category: "analysis",
   },
@@ -406,7 +406,7 @@ const quickActions: QuickAction[] = [
     description_ar: "تحليل وتقييم البيانات",
     description_en: "Analyze and validate data",
     icon: BarChart3,
-    color: "teal",
+    color: "gradient-nature",
     action: "market-analysis",
     category: "analysis",
   },
@@ -417,8 +417,30 @@ const quickActions: QuickAction[] = [
     description_ar: "تتبع المشاريع في الوقت الفعلي",
     description_en: "Track projects in real-time",
     icon: Activity,
-    color: "red",
+    color: "gradient-sunset",
     action: "real-time-monitoring",
+    category: "project",
+  },
+  {
+    id: "7",
+    title_ar: "نماذج الذكاء الاصطناعي",
+    title_en: "Free AI Models",
+    description_ar: "مكتبة نماذج الذكاء الاصطناعي",
+    description_en: "AI models library access",
+    icon: Bot,
+    color: "gradient-serenity",
+    action: "ai-models",
+    category: "ai",
+  },
+  {
+    id: "8",
+    title_ar: "لوحة الإدارة",
+    title_en: "Admin Dashboard",
+    description_ar: "إدارة النظام والمستخدمين",
+    description_en: "System and user management",
+    icon: Settings,
+    color: "gradient-luxury",
+    action: "admin",
     category: "project",
   },
 ];
@@ -470,7 +492,7 @@ const welcomeSuggestions: WelcomeAssistantSuggestion[] = [
     title_ar: "ابدأ بالخريطة الذكية",
     title_en: "Start with Smart Map",
     description_ar:
-      "استكشف الفرص الاستثمارية في الإمارات على خريطتنا التفاعلية",
+      "استكشف الفرص الاستثمارية في الإمارات على خريطتنا ا��تفاعلية",
     description_en:
       "Explore UAE investment opportunities on our interactive map",
     action: "smart-map",
