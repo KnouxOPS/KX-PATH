@@ -45,7 +45,6 @@ import {
   Share,
   Save,
   RefreshCw,
-  Magic,
   Sparkles,
   Wand2,
   Lightbulb,

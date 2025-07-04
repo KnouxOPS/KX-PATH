@@ -56,7 +56,6 @@ import {
   Cloud,
   Droplets,
   Brain,
-  Magic,
   Lightbulb,
   Sparkles,
   Bot,
