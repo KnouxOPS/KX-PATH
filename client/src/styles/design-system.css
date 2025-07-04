@@ -309,6 +309,79 @@
   );
 }
 
+/* ✨ New Harmonious Gradient Combinations */
+.gradient-sunset {
+  background: linear-gradient(
+    135deg,
+    var(--amber-400) 0%,
+    var(--coral-500) 50%,
+    var(--rose-600) 100%
+  );
+}
+
+.gradient-ocean {
+  background: linear-gradient(
+    135deg,
+    var(--oceanic-blue-400) 0%,
+    var(--teal-500) 50%,
+    var(--primary-emerald-600) 100%
+  );
+}
+
+.gradient-royalty {
+  background: linear-gradient(
+    135deg,
+    var(--purple-400) 0%,
+    var(--indigo-500) 50%,
+    var(--oceanic-blue-600) 100%
+  );
+}
+
+.gradient-nature {
+  background: linear-gradient(
+    135deg,
+    var(--primary-emerald-400) 0%,
+    var(--teal-500) 50%,
+    var(--amber-400) 100%
+  );
+}
+
+.gradient-luxury {
+  background: linear-gradient(
+    135deg,
+    var(--accent-gold-400) 0%,
+    var(--amber-500) 50%,
+    var(--rose-500) 100%
+  );
+}
+
+.gradient-innovation {
+  background: linear-gradient(
+    135deg,
+    var(--purple-400) 0%,
+    var(--coral-500) 50%,
+    var(--accent-gold-500) 100%
+  );
+}
+
+.gradient-serenity {
+  background: linear-gradient(
+    135deg,
+    var(--teal-300) 0%,
+    var(--oceanic-blue-400) 50%,
+    var(--indigo-500) 100%
+  );
+}
+
+.gradient-energy {
+  background: linear-gradient(
+    135deg,
+    var(--coral-400) 0%,
+    var(--amber-500) 50%,
+    var(--accent-gold-600) 100%
+  );
+}
+
 /* 🎨 Interactive States */
 .interactive-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
