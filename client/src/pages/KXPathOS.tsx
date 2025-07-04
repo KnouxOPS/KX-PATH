@@ -2,6 +2,7 @@ import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
 import KXPathDashboard from "@/components/KXPathDashboard";
+import SmartKXDashboard from "@/components/SmartKXDashboard";
 import SmartServicesHub from "@/components/SmartServicesHub";
 import AIDesignHub from "@/components/AIDesignHub";
 import LiveMarketData from "@/components/LiveMarketData";
@@ -64,7 +65,7 @@ export default function KXPathOS() {
       case "field":
         return <FieldTeamDashboard language={language} />;
       default:
-        return <KXPathDashboard language={language} userRole={userRole} />;
+        return <SmartKXDashboard language={language} userRole={userRole} />;
     }
   };
 
