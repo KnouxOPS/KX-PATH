@@ -52,7 +52,7 @@ export default function Header({
       {/* Welcome Section */}
       <div className={`${isRTL ? "text-right" : "text-left"}`}>
         <h2 className="text-2xl font-bold text-white mb-1">
-          {welcomeText[appType][language]}
+          {welcomeText[appType]?.[language] || welcomeText.landscape[language]}
         </h2>
         {appType === "landscape" && (
           <div
