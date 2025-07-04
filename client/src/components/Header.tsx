@@ -4,7 +4,11 @@ import { Button } from "@/components/ui/button";
 interface HeaderProps {
   language: "en" | "ar";
   onToggleLanguage: () => void;
-  appType?: "crypto" | "landscape";
+  appType?: "crypto" | "landscape" | "kxpath";
+  userRole?: "admin" | "client" | "premium" | "field" | "researcher";
+  onRoleChange?: (
+    role: "admin" | "client" | "premium" | "field" | "researcher",
+  ) => void;
 }
 
 export default function Header({
