@@ -18,6 +18,8 @@ import UAESmartMap from "@/components/UAESmartMap";
 import UAESmartTerrain from "@/components/UAESmartTerrain";
 import SmartUAERadar from "@/components/SmartUAERadar";
 import SmartOpportunityHunter from "@/components/SmartOpportunityHunter";
+import CompetitiveIntelligence from "@/components/CompetitiveIntelligence";
+import MarketScanner from "@/components/MarketScanner";
 
 export default function KXPathOS() {
   const [language, setLanguage] = useState<"en" | "ar">("ar");
@@ -52,6 +54,10 @@ export default function KXPathOS() {
         return <UAESmartMap language={language} />;
       case "opportunity-hunter":
         return <SmartOpportunityHunter language={language} />;
+      case "competitive-intelligence":
+        return <CompetitiveIntelligence language={language} />;
+      case "market-scanner":
+        return <MarketScanner language={language} />;
       case "projects":
         return <ProjectManagement language={language} userRole={userRole} />;
       case "live-feed":
