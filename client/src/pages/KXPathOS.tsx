@@ -21,7 +21,7 @@ import SmartOpportunityHunter from "@/components/SmartOpportunityHunter";
 export default function KXPathOS() {
   const [language, setLanguage] = useState<"en" | "ar">("ar");
   const [activeModule, setActiveModule] = useState("dashboard");
-  const [showSplash, setShowSplash] = useState(true);
+
   const [userRole, setUserRole] = useState<
     "admin" | "client" | "premium" | "field" | "researcher"
   >("admin");
