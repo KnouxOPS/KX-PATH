@@ -29,6 +29,10 @@ export default function Header({
       en: "Welcome to KX PATH Dashboard",
       ar: "مرحباً بك في لوحة تحكم طريق الخبرة",
     },
+    kxpath: {
+      en: "Welcome to KX PATH - Landscape AI-OS",
+      ar: "مرحباً بك في طريق الخبرة - نظام تشغيل المناظر الطبيعية الذكي",
+    },
   };
 
   const currentDate = new Date().toLocaleDateString(
