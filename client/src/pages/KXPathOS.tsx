@@ -23,6 +23,7 @@ import SmartOpportunityHunterEnhanced from "@/components/SmartOpportunityHunterE
 import CompetitiveIntelligence from "@/components/CompetitiveIntelligence";
 import AIDesignStudioEnhanced from "@/components/AIDesignStudioEnhanced";
 import MarketAnalysisValidation from "@/components/MarketAnalysisValidation";
+import KXPathSystemReport from "@/components/KXPathSystemReport";
 
 export default function KXPathOS() {
   const [language, setLanguage] = useState<"en" | "ar">("ar");
