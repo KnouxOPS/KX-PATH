@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
+import GlassLogo from "@/components/GlassLogo";
 import KXPathDashboard from "@/components/KXPathDashboard";
 import SmartKXDashboard from "@/components/SmartKXDashboard";
 import SmartServicesHub from "@/components/SmartServicesHub";
@@ -111,15 +112,29 @@ export default function KXPathOS() {
 
       {/* Main Layout */}
       <div className="relative z-10 min-h-screen flex flex-col">
-        {/* Header */}
-        <div className="px-6 py-4 border-b border-emerald-400/20 bg-black/20 backdrop-blur-lg">
-          <Header
-            language={language}
-            onToggleLanguage={toggleLanguage}
-            appType="kxpath"
-            userRole={userRole}
-            onRoleChange={setUserRole}
-          />
+        {/* Glass Logo Header */}
+        <div className="px-6 py-4">
+          <GlassLogo language={language} />
+        </div>
+
+        {/* Original Header for controls */}
+        <div className="px-6 py-2 border-b border-emerald-400/20 bg-black/10 backdrop-blur-lg">
+          <div
+            className={`flex items-center justify-between ${language === "ar" ? "flex-row-reverse" : ""}`}
+          >
+            <div></div>
+            <div className="flex items-center gap-4">
+              <Button
+                onClick={toggleLanguage}
+                variant="ghost"
+                size="sm"
+                className="text-white hover:bg-white/10"
+              >
+                <Globe className="w-4 h-4 mr-2" />
+                {language === "en" ? "العربية" : "English"}
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* Smart Terrain Map - Always at Top */}
