@@ -80,6 +80,8 @@ export default function KXPathOS() {
         return <ResearcherHub language={language} />;
       case "field":
         return <FieldTeamDashboard language={language} />;
+      case "system-report":
+        return <KXPathSystemReport language={language} />;
       default:
         return <KXPathDashboardV2 language={language} userRole={userRole} />;
     }
