@@ -112,7 +112,7 @@ const translations = {
     coreModules: "الوحدات الأساسية",
     intelligenceTools: "أدوات الاستخبارات",
     designStudio: "استوديو التصميم",
-    projectManagement: "إدارة المشاريع",
+    projectSection: "إدارة المشاريع",
     systemTools: "أدوات النظام",
     settings: "الإعدادات",
     help: "المساعدة والدعم",
