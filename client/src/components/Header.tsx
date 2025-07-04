@@ -4,13 +4,19 @@ import { Button } from "@/components/ui/button";
 interface HeaderProps {
   language: "en" | "ar";
   onToggleLanguage: () => void;
-  appType?: "crypto" | "landscape";
+  appType?: "crypto" | "landscape" | "kxpath";
+  userRole?: "admin" | "client" | "premium" | "field" | "researcher";
+  onRoleChange?: (
+    role: "admin" | "client" | "premium" | "field" | "researcher",
+  ) => void;
 }
 
 export default function Header({
   language,
   onToggleLanguage,
   appType = "landscape",
+  userRole = "admin",
+  onRoleChange,
 }: HeaderProps) {
   const isRTL = language === "ar";
 
@@ -22,6 +28,10 @@ export default function Header({
     landscape: {
       en: "Welcome to KX PATH Dashboard",
       ar: "مرحباً بك في لوحة تحكم طريق الخبرة",
+    },
+    kxpath: {
+      en: "Welcome to KX PATH UAE",
+      ar: "مرحباً بك في طريق الخبرة الإمارات",
     },
   };
 
@@ -44,7 +54,7 @@ export default function Header({
         <h2 className="text-2xl font-bold text-white mb-1">
           {welcomeText[appType][language]}
         </h2>
-        {appType === "landscape" && (
+        {(appType === "landscape" || appType === "kxpath") && (
           <div
             className={`flex items-center gap-2 text-emerald-300 text-sm ${isRTL ? "flex-row-reverse" : ""}`}
           >
@@ -52,7 +62,13 @@ export default function Header({
             <span>{currentDate}</span>
             <MapPin className="w-4 h-4 ml-4" />
             <span>
-              {language === "ar" ? "الرياض، السعودية" : "Riyadh, Saudi Arabia"}
+              {language === "ar"
+                ? appType === "kxpath"
+                  ? "دبي، الإمارات العربية المتحدة"
+                  : "الرياض، السعودية"
+                : appType === "kxpath"
+                  ? "Dubai, UAE"
+                  : "Riyadh, Saudi Arabia"}
             </span>
           </div>
         )}
@@ -97,7 +113,25 @@ export default function Header({
           className={`flex items-center gap-3 ${isRTL ? "flex-row-reverse" : ""}`}
         >
           <span className="text-[#DDD] text-lg">
-            {language === "en" ? "Admin" : "المدير"}
+            {language === "en"
+              ? userRole === "admin"
+                ? "Admin"
+                : userRole === "client"
+                  ? "Client"
+                  : userRole === "premium"
+                    ? "Premium"
+                    : userRole === "field"
+                      ? "Field Team"
+                      : "Researcher"
+              : userRole === "admin"
+                ? "المدير"
+                : userRole === "client"
+                  ? "العميل"
+                  : userRole === "premium"
+                    ? "مميز"
+                    : userRole === "field"
+                      ? "فريق ميداني"
+                      : "باحث"}
           </span>
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-teal-400 flex items-center justify-center text-white font-bold">
             KX
