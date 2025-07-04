@@ -37,9 +37,6 @@ export default function KXPathOS() {
   };
 
   // Show splash screen first
-  if (showSplash) {
-    return <EpicSplash onComplete={() => setShowSplash(false)} />;
-  }
 
   const renderContent = () => {
     switch (activeModule) {
