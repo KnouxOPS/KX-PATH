@@ -431,29 +431,29 @@ export default function UAESmartMapEnhanced({ language }: UAEEnhancedMapProps) {
           <div className="mb-6">
             <h3 className="text-lg font-semibold mb-3">{t.analytics}</h3>
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-gradient-to-br from-emerald-500/20 to-teal-500/10 border border-emerald-400/30 rounded-lg p-3">
                 <div className="text-2xl font-bold text-emerald-400">
                   {mapStats.totalMarkers}
                 </div>
-                <div className="text-xs text-gray-300">{t.totalMarkers}</div>
+                <div className="text-xs text-emerald-300">{t.totalMarkers}</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-gradient-to-br from-blue-500/20 to-indigo-500/10 border border-blue-400/30 rounded-lg p-3">
                 <div className="text-2xl font-bold text-blue-400">
                   {mapStats.activeProjects}
                 </div>
-                <div className="text-xs text-gray-300">{t.activeProjects}</div>
+                <div className="text-xs text-blue-300">{t.activeProjects}</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
-                <div className="text-lg font-bold text-yellow-400">
+              <div className="bg-gradient-to-br from-amber-500/20 to-orange-500/10 border border-amber-400/30 rounded-lg p-3">
+                <div className="text-lg font-bold text-amber-400">
                   {(mapStats.avgPrice / 1000000).toFixed(1)}M
                 </div>
-                <div className="text-xs text-gray-300">{t.avgPrice}</div>
+                <div className="text-xs text-amber-300">{t.avgPrice}</div>
               </div>
-              <div className="bg-white/10 rounded-lg p-3">
+              <div className="bg-gradient-to-br from-purple-500/20 to-rose-500/10 border border-purple-400/30 rounded-lg p-3">
                 <div className="text-2xl font-bold text-purple-400">
                   {mapStats.hotZones}
                 </div>
-                <div className="text-xs text-gray-300">{t.hotZones}</div>
+                <div className="text-xs text-purple-300">{t.hotZones}</div>
               </div>
             </div>
           </div>
