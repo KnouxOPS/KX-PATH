@@ -1,8 +1,8 @@
-/* KX PATH UAE v2 Design System - Based on Figma Specifications */
+/* KX PATH UAE v2 Enhanced Design System - Diverse & Harmonious Colors */
 
-/* 🎨 Color System */
+/* 🎨 Enhanced Color System with Perfect Harmony */
 :root {
-  /* Primary Colors */
+  /* Primary Emerald Scale - Core Brand */
   --primary-emerald: #0d986a;
   --primary-emerald-50: #ecfdf5;
   --primary-emerald-100: #d1fae5;
@@ -15,7 +15,7 @@
   --primary-emerald-800: #065f46;
   --primary-emerald-900: #064e3b;
 
-  /* Accent Colors */
+  /* Golden Accent - Luxury & Premium */
   --accent-gold: #ffd166;
   --accent-gold-50: #fffbeb;
   --accent-gold-100: #fef3c7;
@@ -28,7 +28,7 @@
   --accent-gold-800: #92400e;
   --accent-gold-900: #78350f;
 
-  /* Thematic Colors */
+  /* Oceanic Blue - Intelligence & Technology */
   --oceanic-blue: #1e90ff;
   --oceanic-blue-50: #eff6ff;
   --oceanic-blue-100: #dbeafe;
@@ -40,6 +40,80 @@
   --oceanic-blue-700: #1d4ed8;
   --oceanic-blue-800: #1e40af;
   --oceanic-blue-900: #1e3a8a;
+
+  /* New Harmonious Color Families */
+
+  /* Coral - Energy & Innovation */
+  --coral-50: #fef7f7;
+  --coral-100: #fde8e8;
+  --coral-200: #fbd5d5;
+  --coral-300: #f8b4b4;
+  --coral-400: #f87171;
+  --coral-500: #ef4444;
+  --coral-600: #dc2626;
+  --coral-700: #b91c1c;
+  --coral-800: #991b1b;
+  --coral-900: #7f1d1d;
+
+  /* Purple - Creativity & Vision */
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7c3aed;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+
+  /* Teal - Balance & Growth */
+  --teal-50: #f0fdfa;
+  --teal-100: #ccfbf1;
+  --teal-200: #99f6e4;
+  --teal-300: #5eead4;
+  --teal-400: #2dd4bf;
+  --teal-500: #14b8a6;
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+  --teal-800: #115e59;
+  --teal-900: #134e4a;
+
+  /* Rose - Elegance & Sophistication */
+  --rose-50: #fff1f2;
+  --rose-100: #ffe4e6;
+  --rose-200: #fecdd3;
+  --rose-300: #fda4af;
+  --rose-400: #fb7185;
+  --rose-500: #f43f5e;
+  --rose-600: #e11d48;
+  --rose-700: #be123c;
+  --rose-800: #9f1239;
+  --rose-900: #881337;
+
+  /* Amber - Success & Achievement */
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+  --amber-900: #78350f;
+
+  /* Indigo - Trust & Reliability */
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --indigo-300: #a5b4fc;
+  --indigo-400: #818cf8;
+  --indigo-500: #6366f1;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+  --indigo-900: #312e81;
 
   /* Base Backgrounds */
   --bg-light: #f5f7fa;
