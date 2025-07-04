@@ -15,6 +15,8 @@ export default function Header({
   language,
   onToggleLanguage,
   appType = "landscape",
+  userRole = "admin",
+  onRoleChange,
 }: HeaderProps) {
   const isRTL = language === "ar";
 
