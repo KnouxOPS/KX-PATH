@@ -317,7 +317,7 @@ export default function NooxAIDesignHub({ language }: NooxAIDesignHubProps) {
       generateDesignNow: "توليد التصميم الآن",
       nooxIsAnalyzing: "نوكس يحلل...",
       nooxIsGenerating: "نوكس ينتج التصميم...",
-      climateCompatible: "متوافق مع المناخ",
+      climateCompatible: "متوافق مع ا��مناخ",
       waterEfficient: "موفر للمياه",
       lowMaintenance: "صيانة قليلة",
       costEstimate: "تقدير التكلفة",
@@ -330,7 +330,7 @@ export default function NooxAIDesignHub({ language }: NooxAIDesignHubProps) {
       modify: "تعديل",
       approve: "موافقة",
       villa: "فيلا",
-      apartment: "ش��ة",
+      apartment: "شقة",
       commercial: "تجاري",
       public: "عام",
       modernMinimalist: "عصري بسيط",
@@ -610,7 +610,7 @@ export default function NooxAIDesignHub({ language }: NooxAIDesignHubProps) {
           {[
             { key: "create", icon: PlusCircle, label: tr.createNewProject },
             { key: "analyze", icon: Scan, label: tr.analyzeProject },
-            { key: "generate", icon: Magic, label: tr.generateDesign },
+            { key: "generate", icon: Wand2, label: tr.generateDesign },
             { key: "review", icon: Eye, label: tr.reviewResults },
           ].map(({ key, icon: Icon, label }) => (
             <Button
@@ -827,7 +827,7 @@ export default function NooxAIDesignHub({ language }: NooxAIDesignHubProps) {
                   disabled={!selectedTheme || siteImages.length === 0}
                   className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white px-8 py-3 text-lg font-bold border-0 shadow-lg"
                 >
-                  <Magic className="w-5 h-5 mr-2" />
+                  <Wand2 className="w-5 h-5 mr-2" />
                   {tr.generateDesignNow}
                 </Button>
               </div>
