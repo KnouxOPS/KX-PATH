@@ -438,6 +438,24 @@ export default function SidebarV2({
         border: "border-yellow-400/30",
         glow: "shadow-yellow-400/20",
       },
+      coral: {
+        bg: isActive ? "bg-red-500/20" : "hover:bg-red-500/10",
+        text: isActive ? "text-red-400" : "text-red-300",
+        border: "border-red-400/30",
+        glow: "shadow-red-400/20",
+      },
+      rose: {
+        bg: isActive ? "bg-rose-500/20" : "hover:bg-rose-500/10",
+        text: isActive ? "text-rose-400" : "text-rose-300",
+        border: "border-rose-400/30",
+        glow: "shadow-rose-400/20",
+      },
+      amber: {
+        bg: isActive ? "bg-amber-500/20" : "hover:bg-amber-500/10",
+        text: isActive ? "text-amber-400" : "text-amber-300",
+        border: "border-amber-400/30",
+        glow: "shadow-amber-400/20",
+      },
     };
     return colorMap[color] || colorMap.emerald;
   };
