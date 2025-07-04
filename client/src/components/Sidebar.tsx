@@ -17,6 +17,8 @@ import {
   Globe,
   Eye,
   Search,
+  Activity,
+  Brain,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -35,6 +37,33 @@ export default function Sidebar({
   userRole = "admin",
 }: SidebarProps) {
   const kxPathModules = [
+    {
+      id: "master-control",
+      name_ar: "🎛️ مركز التحكم الشامل",
+      name_en: "🎛️ Master Control Center",
+      icon: Activity,
+      color: "cyan",
+      roles: ["admin"],
+      highlight: true,
+    },
+    {
+      id: "smart-territory",
+      name_ar: "🌍 نظام الاستخبارات الإقليمية",
+      name_en: "🌍 Smart Territory Intelligence",
+      icon: Radar,
+      color: "blue",
+      roles: ["admin"],
+      highlight: true,
+    },
+    {
+      id: "noox-ai",
+      name_ar: "🧠 نوكس - مصمم الذكاء الاصطناعي",
+      name_en: "🧠 Noox AI Design Hub",
+      icon: Brain,
+      color: "purple",
+      roles: ["admin", "premium"],
+      highlight: true,
+    },
     {
       id: "dashboard",
       name_ar: "لوحة التحكم",
