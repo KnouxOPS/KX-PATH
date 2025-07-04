@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
+import SidebarV2 from "@/components/SidebarV2";
 import Header from "@/components/Header";
 import KXPathDashboard from "@/components/KXPathDashboard";
 import KXPathDashboardV2 from "@/components/KXPathDashboardV2";
@@ -148,7 +149,7 @@ export default function KXPathOS() {
       </div>
 
       <div className="relative z-10 flex">
-        <Sidebar
+        <SidebarV2
           language={language}
           activeModule={activeModule}
           onModuleChange={setActiveModule}
@@ -156,7 +157,7 @@ export default function KXPathOS() {
           userRole={userRole}
         />
 
-        <div className="flex-1 ml-[273px]">
+        <div className="flex-1 pl-80">
           <Header
             language={language}
             onToggleLanguage={toggleLanguage}
