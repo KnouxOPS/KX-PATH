@@ -15,6 +15,10 @@ import {
   Zap,
   Building2,
   Globe,
+  Eye,
+  Search,
+  Activity,
+  Brain,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -33,6 +37,33 @@ export default function Sidebar({
   userRole = "admin",
 }: SidebarProps) {
   const kxPathModules = [
+    {
+      id: "master-control",
+      name_ar: "🎛️ مركز التحكم الشامل",
+      name_en: "🎛️ Master Control Center",
+      icon: Activity,
+      color: "cyan",
+      roles: ["admin"],
+      highlight: true,
+    },
+    {
+      id: "smart-territory",
+      name_ar: "🌍 نظام الاستخبارات الإقليمية",
+      name_en: "🌍 Smart Territory Intelligence",
+      icon: Radar,
+      color: "blue",
+      roles: ["admin"],
+      highlight: true,
+    },
+    {
+      id: "noox-ai",
+      name_ar: "🧠 نوكس - مصمم الذكاء الاصطناعي",
+      name_en: "🧠 Noox AI Design Hub",
+      icon: Brain,
+      color: "purple",
+      roles: ["admin", "premium"],
+      highlight: true,
+    },
     {
       id: "dashboard",
       name_ar: "لوحة التحكم",
@@ -81,6 +112,24 @@ export default function Sidebar({
       name_en: "🎯 Smart Opportunity Hunter",
       icon: Target,
       color: "pink",
+      roles: ["admin"],
+      highlight: true,
+    },
+    {
+      id: "competitive-intelligence",
+      name_ar: "🔍 ذكاء المنافسين",
+      name_en: "🔍 Competitive Intelligence",
+      icon: Globe,
+      color: "red",
+      roles: ["admin"],
+      highlight: true,
+    },
+    {
+      id: "market-scanner",
+      name_ar: "📡 ماسح السوق الذكي",
+      name_en: "📡 Smart Market Scanner",
+      icon: Radar,
+      color: "orange",
       roles: ["admin"],
       highlight: true,
     },

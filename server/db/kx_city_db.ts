@@ -1,5 +1,5 @@
-// KX_CITY_DB - UAE Smart Landscape Database
-// مخصص بالكامل للسوق الإماراتي 🇦🇪
+// KX PATH UAE Smart Database System
+// طريق الخبرة - قاعدة بيانات الإمارات الذكية
 
 export interface UAEArea {
   id: string;
@@ -23,30 +23,22 @@ export interface UAEArea {
       west: number;
     };
   };
-  population: number;
   villa_count: number;
-  apartment_count: number;
-  avg_property_value: number;
-  terrain_type: "coastal" | "desert" | "mountain" | "urban" | "suburban";
-  development_status: "established" | "developing" | "new" | "planned";
-  landscape_potential: "high" | "medium" | "low";
   active_projects: number;
   interested_clients: number;
+  landscape_potential: "high" | "medium" | "low";
+  avg_property_value: number;
+  competition_level: "low" | "medium" | "high";
+  soil_type: "sandy" | "rocky" | "clay" | "mixed";
+  irrigation_complexity: "simple" | "moderate" | "complex";
+  premium_factor: number; // 1-10 scale
 }
 
 export interface LiveProject {
   id: string;
   title_ar: string;
   title_en: string;
-  client_name: string;
-  area_id: string;
   coordinates: { lat: number; lng: number };
-  project_type:
-    | "villa_garden"
-    | "commercial_landscape"
-    | "pool_installation"
-    | "maintenance"
-    | "irrigation_system";
   status:
     | "planning"
     | "design"
@@ -55,20 +47,21 @@ export interface LiveProject {
     | "completed"
     | "maintenance";
   budget: number;
+  progress_percentage: number;
+  client_tier: "standard" | "premium" | "vip";
+  project_type:
+    | "villa_garden"
+    | "commercial_landscape"
+    | "pool_installation"
+    | "maintenance"
+    | "irrigation_system"
+    | "green_roof"
+    | "outdoor_lighting";
   start_date: string;
   estimated_completion: string;
-  progress_percentage: number;
   assigned_team: string[];
-  priority: "low" | "medium" | "high" | "urgent";
-  client_tier: "standard" | "premium" | "vip";
-  terrain_analysis: {
-    soil_type: string;
-    drainage: string;
-    sun_exposure: string;
-    existing_vegetation: string[];
-  };
-  ai_recommendations: string[];
-  last_update: string;
+  materials_used: string[];
+  sustainability_score: number;
 }
 
 export interface SmartNotification {
@@ -78,450 +71,537 @@ export interface SmartNotification {
     | "property_sale"
     | "land_purchase"
     | "development_permit"
-    | "market_opportunity";
+    | "renovation"
+    | "zoning_change";
   title_ar: string;
   title_en: string;
   description_ar: string;
   description_en: string;
-  area_id: string;
   coordinates: { lat: number; lng: number };
-  property_details: {
-    type: "villa" | "apartment" | "commercial" | "land";
-    size_sqm: number;
-    estimated_value: number;
-    owner_type: "individual" | "developer" | "government";
-  };
-  opportunity_score: number; // 0-100
-  created_at: string;
-  expires_at: string;
-  is_processed: boolean;
-  generated_leads: number;
-}
-
-export interface UAEMarketData {
-  id: string;
   area_id: string;
-  date: string;
-  property_transactions: number;
-  avg_transaction_value: number;
-  new_constructions: number;
-  landscape_service_demand: number;
-  seasonal_trends: {
-    winter_demand: number;
-    summer_demand: number;
-    peak_months: string[];
-  };
-  competitor_activity: number;
-  material_costs: {
-    plants: number;
-    irrigation: number;
-    lighting: number;
-    maintenance: number;
-  };
+  opportunity_score: number; // 1-100
+  property_value: number;
+  plot_size: number;
+  created_at: string;
+  source:
+    | "DubaiOpenData"
+    | "SharjahRera"
+    | "AjmanLands"
+    | "AbuDhabiMunicipality"
+    | "Manual"
+    | "AIDiscovery";
+  urgency_level: "low" | "medium" | "high" | "urgent";
+  tags: string[];
 }
 
-// UAE Areas Database
-export const uaeAreasData: UAEArea[] = [
+export interface Company {
+  id: string;
+  user_id: string;
+  company_name_ar: string;
+  company_name_en: string;
+  description_ar: string;
+  description_en: string;
+  license_number: string;
+  municipality: string;
+  services_offered: string[];
+  specializations: string[];
+  portfolio_images: string[];
+  rating: number;
+  total_projects: number;
+  years_experience: number;
+  team_size: number;
+  location_coordinates: { lat: number; lng: number };
+  service_areas: string[]; // Area IDs they cover
+  verified: boolean;
+  premium_member: boolean;
+  contact_info: {
+    phone: string;
+    email: string;
+    website?: string;
+    instagram?: string;
+    whatsapp?: string;
+  };
+  business_hours: {
+    [key: string]: { open: string; close: string; closed?: boolean };
+  };
+  created_at: string;
+}
+
+export interface GardenRequest {
+  id: string;
+  client_id: string;
+  title_ar: string;
+  title_en: string;
+  description_ar: string;
+  description_en: string;
+  property_type: "villa" | "apartment" | "commercial" | "government" | "hotel";
+  area_size: number; // square meters
+  budget_range: { min: number; max: number };
+  preferred_styles: string[];
+  special_requirements: string[];
+  has_pool: boolean;
+  has_outdoor_kitchen: boolean;
+  has_playground: boolean;
+  has_pergola: boolean;
+  irrigation_preference: "automatic" | "manual" | "smart";
+  maintenance_preference: "self" | "company" | "hybrid";
+  timeline: "urgent" | "normal" | "flexible";
+  coordinates: { lat: number; lng: number };
+  area_id: string;
+  soil_analysis: {
+    ph_level?: number;
+    drainage_quality?: "excellent" | "good" | "poor";
+    soil_type?: string;
+    sun_exposure?: "full" | "partial" | "shade";
+  };
+  status:
+    | "pending"
+    | "reviewing"
+    | "quoted"
+    | "approved"
+    | "in_progress"
+    | "completed"
+    | "cancelled";
+  assigned_company_id?: string;
+  ai_plan_id?: string;
+  quotes_received: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface AIPlan {
+  id: string;
+  garden_request_id: string;
+  generated_images: string[];
+  design_summary_ar: string;
+  design_summary_en: string;
+  plant_recommendations: {
+    name_ar: string;
+    name_en: string;
+    scientific_name: string;
+    climate_suitability: "excellent" | "good" | "fair";
+    maintenance_level: "low" | "medium" | "high";
+    water_requirement: "low" | "medium" | "high";
+    growth_rate: "slow" | "medium" | "fast";
+    size_at_maturity: string;
+    special_features: string[];
+  }[];
+  hardscape_elements: {
+    type: string;
+    description_ar: string;
+    description_en: string;
+    estimated_cost: number;
+    installation_complexity: "simple" | "moderate" | "complex";
+  }[];
+  irrigation_plan: {
+    system_type: "drip" | "sprinkler" | "smart" | "hybrid";
+    zones: number;
+    water_efficiency_rating: number;
+    estimated_monthly_usage: number; // liters
+    automation_level: "basic" | "advanced" | "smart_ai";
+  };
+  sustainability_features: string[];
+  estimated_total_cost: { min: number; max: number };
+  estimated_timeline: string;
+  maintenance_schedule: {
+    daily: string[];
+    weekly: string[];
+    monthly: string[];
+    seasonal: string[];
+  };
+  model_used: string;
+  generation_parameters: any;
+  approved_by_client: boolean;
+  implemented: boolean;
+  created_at: string;
+}
+
+export interface Rating {
+  id: string;
+  client_id: string;
+  company_id: string;
+  project_id: string;
+  overall_rating: number; // 1-5
+  quality_rating: number;
+  timeliness_rating: number;
+  communication_rating: number;
+  value_rating: number;
+  comment_ar?: string;
+  comment_en?: string;
+  images?: string[];
+  would_recommend: boolean;
+  created_at: string;
+}
+
+// UAE Areas Database - Real locations and data
+export const UAE_AREAS_DATA: UAEArea[] = [
   // Dubai Areas
   {
-    id: "dubai_jumeirah",
-    name_ar: "الجميرا",
+    id: "dubai_marina",
+    name_ar: "دبي مارينا",
+    name_en: "Dubai Marina",
+    emirate: "dubai",
+    coordinates: {
+      lat: 25.0814,
+      lng: 55.1391,
+      bounds: { north: 25.095, south: 25.065, east: 55.155, west: 55.12 },
+    },
+    villa_count: 156,
+    active_projects: 45,
+    interested_clients: 89,
+    landscape_potential: "high",
+    avg_property_value: 4500000,
+    competition_level: "high",
+    soil_type: "sandy",
+    irrigation_complexity: "complex",
+    premium_factor: 9,
+  },
+  {
+    id: "jumeirah",
+    name_ar: "جميرا",
     name_en: "Jumeirah",
     emirate: "dubai",
     coordinates: {
-      lat: 25.2084,
-      lng: 55.2719,
-      bounds: { north: 25.22, south: 25.1968, east: 55.285, west: 55.2588 },
+      lat: 25.2252,
+      lng: 55.2606,
+      bounds: { north: 25.245, south: 25.205, east: 55.28, west: 55.24 },
     },
-    population: 85000,
-    villa_count: 2450,
-    apartment_count: 1200,
-    avg_property_value: 3500000,
-    terrain_type: "coastal",
-    development_status: "established",
+    villa_count: 287,
+    active_projects: 67,
+    interested_clients: 134,
     landscape_potential: "high",
-    active_projects: 18,
-    interested_clients: 45,
+    avg_property_value: 6200000,
+    competition_level: "medium",
+    soil_type: "sandy",
+    irrigation_complexity: "moderate",
+    premium_factor: 10,
   },
   {
-    id: "dubai_downtown",
-    name_ar: "وسط المدينة",
+    id: "downtown_dubai",
+    name_ar: "داون تاون دبي",
     name_en: "Downtown Dubai",
     emirate: "dubai",
     coordinates: {
       lat: 25.1972,
       lng: 55.2744,
-      bounds: { north: 25.205, south: 25.1894, east: 55.2822, west: 55.2666 },
+      bounds: { north: 25.21, south: 25.185, east: 55.29, west: 55.26 },
     },
-    population: 120000,
-    villa_count: 150,
-    apartment_count: 8500,
-    avg_property_value: 2800000,
-    terrain_type: "urban",
-    development_status: "established",
+    villa_count: 89,
+    active_projects: 23,
+    interested_clients: 67,
     landscape_potential: "medium",
-    active_projects: 12,
-    interested_clients: 28,
+    avg_property_value: 8900000,
+    competition_level: "high",
+    soil_type: "mixed",
+    irrigation_complexity: "complex",
+    premium_factor: 10,
   },
   {
-    id: "dubai_emirates_hills",
-    name_ar: "تلال الإمارات",
-    name_en: "Emirates Hills",
+    id: "dubai_hills",
+    name_ar: "دبي هيلز",
+    name_en: "Dubai Hills",
     emirate: "dubai",
     coordinates: {
-      lat: 25.1126,
-      lng: 55.1661,
-      bounds: { north: 25.125, south: 25.1002, east: 55.1789, west: 55.1533 },
+      lat: 25.1108,
+      lng: 55.2453,
+      bounds: { north: 25.13, south: 25.09, east: 55.265, west: 55.225 },
     },
-    population: 12000,
-    villa_count: 650,
-    apartment_count: 0,
-    avg_property_value: 15000000,
-    terrain_type: "suburban",
-    development_status: "established",
+    villa_count: 412,
+    active_projects: 123,
+    interested_clients: 198,
     landscape_potential: "high",
-    active_projects: 8,
-    interested_clients: 22,
+    avg_property_value: 5800000,
+    competition_level: "medium",
+    soil_type: "clay",
+    irrigation_complexity: "moderate",
+    premium_factor: 8,
   },
 
   // Abu Dhabi Areas
   {
-    id: "abudhabi_khalifa_city",
+    id: "khalifa_city",
     name_ar: "مدينة خليفة",
     name_en: "Khalifa City",
     emirate: "abudhabi",
     coordinates: {
-      lat: 24.4292,
-      lng: 54.6094,
-      bounds: { north: 24.44, south: 24.4184, east: 54.62, west: 54.5988 },
+      lat: 24.4187,
+      lng: 54.5574,
+      bounds: { north: 24.44, south: 24.395, east: 54.58, west: 54.53 },
     },
-    population: 95000,
-    villa_count: 3200,
-    apartment_count: 2800,
-    avg_property_value: 2200000,
-    terrain_type: "suburban",
-    development_status: "developing",
+    villa_count: 523,
+    active_projects: 145,
+    interested_clients: 267,
     landscape_potential: "high",
-    active_projects: 25,
-    interested_clients: 38,
+    avg_property_value: 3200000,
+    competition_level: "low",
+    soil_type: "sandy",
+    irrigation_complexity: "moderate",
+    premium_factor: 7,
   },
   {
-    id: "abudhabi_saadiyat",
-    name_ar: "جزيرة السعديات",
-    name_en: "Saadiyat Island",
+    id: "al_reef",
+    name_ar: "الريف",
+    name_en: "Al Reef",
     emirate: "abudhabi",
     coordinates: {
-      lat: 24.5311,
-      lng: 54.4339,
-      bounds: { north: 24.545, south: 24.5172, east: 54.4467, west: 54.4211 },
+      lat: 24.4298,
+      lng: 54.6063,
+      bounds: { north: 24.445, south: 24.415, east: 54.625, west: 54.59 },
     },
-    population: 45000,
-    villa_count: 1800,
-    apartment_count: 3500,
-    avg_property_value: 4200000,
-    terrain_type: "coastal",
-    development_status: "developing",
+    villa_count: 345,
+    active_projects: 91,
+    interested_clients: 156,
     landscape_potential: "high",
-    active_projects: 15,
-    interested_clients: 32,
+    avg_property_value: 2800000,
+    competition_level: "low",
+    soil_type: "sandy",
+    irrigation_complexity: "simple",
+    premium_factor: 6,
   },
 
   // Sharjah Areas
   {
-    id: "sharjah_al_khawaneej",
-    name_ar: "الخوانيج",
-    name_en: "Al Khawaneej",
+    id: "al_rashidiya_sharjah",
+    name_ar: "الراشدية",
+    name_en: "Al Rashidiya",
     emirate: "sharjah",
     coordinates: {
-      lat: 25.1926,
-      lng: 55.4661,
-      bounds: { north: 25.205, south: 25.1802, east: 55.4789, west: 55.4533 },
+      lat: 25.3421,
+      lng: 55.4652,
+      bounds: { north: 25.36, south: 25.325, east: 55.485, west: 55.445 },
     },
-    population: 68000,
-    villa_count: 2100,
-    apartment_count: 1500,
+    villa_count: 678,
+    active_projects: 234,
+    interested_clients: 456,
+    landscape_potential: "high",
     avg_property_value: 1800000,
-    terrain_type: "suburban",
-    development_status: "established",
+    competition_level: "low",
+    soil_type: "clay",
+    irrigation_complexity: "simple",
+    premium_factor: 5,
+  },
+  {
+    id: "muweilah",
+    name_ar: "مويلح",
+    name_en: "Muweilah",
+    emirate: "sharjah",
+    coordinates: {
+      lat: 25.2847,
+      lng: 55.4712,
+      bounds: { north: 25.3, south: 25.27, east: 55.49, west: 55.45 },
+    },
+    villa_count: 234,
+    active_projects: 67,
+    interested_clients: 123,
     landscape_potential: "medium",
-    active_projects: 10,
-    interested_clients: 19,
+    avg_property_value: 1200000,
+    competition_level: "low",
+    soil_type: "sandy",
+    irrigation_complexity: "simple",
+    premium_factor: 4,
   },
 
   // Ajman Areas
   {
-    id: "ajman_al_nuaimiya",
+    id: "al_nuaimiya",
     name_ar: "النعيمية",
     name_en: "Al Nuaimiya",
     emirate: "ajman",
     coordinates: {
-      lat: 25.4052,
-      lng: 55.4661,
-      bounds: { north: 25.415, south: 25.3954, east: 55.4789, west: 55.4533 },
+      lat: 25.4086,
+      lng: 55.5342,
+      bounds: { north: 25.425, south: 25.39, east: 55.555, west: 55.515 },
     },
-    population: 125000,
-    villa_count: 850,
-    apartment_count: 4200,
-    avg_property_value: 950000,
-    terrain_type: "urban",
-    development_status: "established",
-    landscape_potential: "medium",
-    active_projects: 6,
-    interested_clients: 14,
+    villa_count: 789,
+    active_projects: 234,
+    interested_clients: 567,
+    landscape_potential: "high",
+    avg_property_value: 1500000,
+    competition_level: "low",
+    soil_type: "sandy",
+    irrigation_complexity: "simple",
+    premium_factor: 6,
   },
 
-  // RAK Areas
+  // Ras Al Khaimah Areas
   {
-    id: "rak_al_hamra",
-    name_ar: "الحمراء",
+    id: "al_hamra",
+    name_ar: "الحمرا",
     name_en: "Al Hamra",
     emirate: "rak",
     coordinates: {
-      lat: 25.6816,
-      lng: 55.7369,
-      bounds: { north: 25.695, south: 25.6682, east: 55.7497, west: 55.7241 },
+      lat: 25.7621,
+      lng: 55.8234,
+      bounds: { north: 25.78, south: 25.745, east: 55.845, west: 55.8 },
     },
-    population: 35000,
-    villa_count: 1200,
-    apartment_count: 2800,
-    avg_property_value: 1650000,
-    terrain_type: "coastal",
-    development_status: "developing",
+    villa_count: 167,
+    active_projects: 89,
+    interested_clients: 234,
     landscape_potential: "high",
-    active_projects: 8,
-    interested_clients: 16,
+    avg_property_value: 2200000,
+    competition_level: "low",
+    soil_type: "rocky",
+    irrigation_complexity: "complex",
+    premium_factor: 7,
+  },
+
+  // Fujairah Areas
+  {
+    id: "fujairah_city",
+    name_ar: "الفجيرة",
+    name_en: "Fujairah City",
+    emirate: "fujairah",
+    coordinates: {
+      lat: 25.1267,
+      lng: 56.3414,
+      bounds: { north: 25.145, south: 25.11, east: 56.36, west: 56.32 },
+    },
+    villa_count: 123,
+    active_projects: 78,
+    interested_clients: 145,
+    landscape_potential: "medium",
+    avg_property_value: 1800000,
+    competition_level: "low",
+    soil_type: "rocky",
+    irrigation_complexity: "complex",
+    premium_factor: 6,
   },
 ];
 
-// Live Projects Data
-export const liveProjectsData: LiveProject[] = [
+// Sample Live Notifications
+export const SAMPLE_NOTIFICATIONS: SmartNotification[] = [
   {
-    id: "LP_2024_001",
-    title_ar: "حديقة فيلا الياسمين الفاخرة",
-    title_en: "Luxury Jasmine Villa Garden",
-    client_name: "عائلة المحمد",
-    area_id: "dubai_jumeirah",
-    coordinates: { lat: 25.2048, lng: 55.2708 },
-    project_type: "villa_garden",
-    status: "execution",
-    budget: 450000,
-    start_date: "2024-01-15",
-    estimated_completion: "2024-03-20",
-    progress_percentage: 75,
-    assigned_team: ["ahmed_almarzoqi", "fatima_alsalem", "khalid_alshamsi"],
-    priority: "high",
-    client_tier: "vip",
-    terrain_analysis: {
-      soil_type: "sandy_clay",
-      drainage: "good",
-      sun_exposure: "full_sun",
-      existing_vegetation: ["date_palms", "bougainvillea", "grass_area"],
-    },
-    ai_recommendations: [
-      "استخدام نباتات محلية مقاومة للحرارة",
-      "نظام ري ذكي بالتنقيط",
-      "إضاءة LED موفرة للطاقة",
-      "مسارات من الحجر الطبيعي",
-    ],
-    last_update: "2024-01-22T14:30:00Z",
-  },
-  {
-    id: "LP_2024_002",
-    title_ar: "منتجع الخضراء التجاري - المرحلة الثانية",
-    title_en: "Al Khadra Commercial Resort - Phase 2",
-    client_name: "شركة الرؤية العقارية",
-    area_id: "abudhabi_saadiyat",
-    coordinates: { lat: 24.5311, lng: 54.4339 },
-    project_type: "commercial_landscape",
-    status: "design",
-    budget: 1200000,
-    start_date: "2024-02-01",
-    estimated_completion: "2024-06-30",
-    progress_percentage: 25,
-    assigned_team: ["sara_alfalasi", "omar_alkhalid", "nora_alawadhi"],
-    priority: "high",
-    client_tier: "premium",
-    terrain_analysis: {
-      soil_type: "coastal_sand",
-      drainage: "requires_improvement",
-      sun_exposure: "partial_shade",
-      existing_vegetation: ["mangroves", "palm_trees"],
-    },
-    ai_recommendations: [
-      "تحسين نظام الصرف ��بل الزراعة",
-      "نباتات مقاومة للملوحة",
-      "نظام ري بالرش للمساحات الكبيرة",
-      "مناطق استراحة مظللة",
-    ],
-    last_update: "2024-01-22T16:45:00Z",
-  },
-  {
-    id: "LP_2024_003",
-    title_ar: "صيانة وتطوير حديقة قصر الإمارات",
-    title_en: "Emirates Palace Garden Maintenance & Development",
-    client_name: "فندق قصر الإمارات",
-    area_id: "abudhabi_khalifa_city",
-    coordinates: { lat: 24.4292, lng: 54.6094 },
-    project_type: "maintenance",
-    status: "execution",
-    budget: 850000,
-    start_date: "2024-01-01",
-    estimated_completion: "2024-12-31",
-    progress_percentage: 45,
-    assigned_team: ["mohammed_alnuaimi", "aisha_alzaabi"],
-    priority: "medium",
-    client_tier: "premium",
-    terrain_analysis: {
-      soil_type: "clay_loam",
-      drainage: "excellent",
-      sun_exposure: "mixed",
-      existing_vegetation: ["royal_palms", "roses", "tropical_plants"],
-    },
-    ai_recommendations: [
-      "صيانة دورية شهرية للنباتات النادرة",
-      "نظام مراقبة ذكي للري",
-      "إضافة نباتات عطرية للممرات",
-      "تحديث نظام الإضاءة الليلية",
-    ],
-    last_update: "2024-01-22T11:20:00Z",
-  },
-];
-
-// Smart Notifications Data
-export const smartNotificationsData: SmartNotification[] = [
-  {
-    id: "SN_2024_001",
+    id: "notif_001",
     type: "new_construction",
-    title_ar: "🏗️ فيلا جديدة قيد الإنشاء - الخالدية",
-    title_en: "🏗️ New Villa Under Construction - Al Khalidiyah",
-    description_ar:
-      "تم رصد بناء فيلا جديدة بمساحة 800 متر مربع في منطقة الخالدية. فرصة ممتازة لعرض خدمات التصميم.",
-    description_en:
-      "New villa construction detected with 800 sqm area in Al Khalidiyah. Excellent opportunity for design services.",
-    area_id: "abudhabi_khalifa_city",
-    coordinates: { lat: 24.425, lng: 54.605 },
-    property_details: {
-      type: "villa",
-      size_sqm: 800,
-      estimated_value: 4500000,
-      owner_type: "individual",
-    },
-    opportunity_score: 92,
-    created_at: "2024-01-22T09:15:00Z",
-    expires_at: "2024-01-29T09:15:00Z",
-    is_processed: false,
-    generated_leads: 0,
-  },
-  {
-    id: "SN_2024_002",
-    type: "property_sale",
-    title_ar: "🏡 بيع فيلا بحديقة كبيرة - الجميرا",
-    title_en: "🏡 Villa with Large Garden Sold - Jumeirah",
-    description_ar:
-      "تم بيع فيلا مع حديقة 1200 متر مربع. المالك الجديد قد يحتاج خدمات تجديد المناظر الطبيعية.",
-    description_en:
-      "Villa with 1200 sqm garden sold. New owner may need landscape renovation services.",
-    area_id: "dubai_jumeirah",
-    coordinates: { lat: 25.21, lng: 55.275 },
-    property_details: {
-      type: "villa",
-      size_sqm: 1200,
-      estimated_value: 6200000,
-      owner_type: "individual",
-    },
-    opportunity_score: 87,
-    created_at: "2024-01-22T11:30:00Z",
-    expires_at: "2024-01-29T11:30:00Z",
-    is_processed: false,
-    generated_leads: 1,
-  },
-  {
-    id: "SN_2024_003",
-    type: "development_permit",
-    title_ar: "📋 ترخيص مجمع سكني جديد - الشارقة",
-    title_en: "📋 New Residential Complex Permit - Sharjah",
-    description_ar:
-      "تم منح ترخيص لبناء مجمع سكني يضم 50 فيلا في الخوانيج. فرصة للحصول على عقد شامل.",
-    description_en:
-      "Permit granted for 50-villa residential complex in Al Khawaneej. Opportunity for comprehensive contract.",
-    area_id: "sharjah_al_khawaneej",
-    coordinates: { lat: 25.19, lng: 55.47 },
-    property_details: {
-      type: "commercial",
-      size_sqm: 25000,
-      estimated_value: 75000000,
-      owner_type: "developer",
-    },
+    title_ar: "🏗️ بناء فيلا جديدة في النعيمية",
+    title_en: "🏗️ New Villa Construction in Al Nuaimiya",
+    description_ar: "فيلا بمساحة 1200 متر مربع، 4 غرف نوم، حديقة خلفية كبيرة",
+    description_en: "1200 sqm villa, 4 bedrooms, large backyard garden space",
+    coordinates: { lat: 25.4086, lng: 55.5342 },
+    area_id: "al_nuaimiya",
     opportunity_score: 95,
-    created_at: "2024-01-22T14:00:00Z",
-    expires_at: "2024-02-05T14:00:00Z",
-    is_processed: false,
-    generated_leads: 0,
+    property_value: 2500000,
+    plot_size: 1200,
+    created_at: "2024-01-15T10:30:00Z",
+    source: "AjmanLands",
+    urgency_level: "high",
+    tags: ["high_potential", "new_area", "villa", "large_garden"],
   },
-];
-
-// Market Data
-export const marketDataSample: UAEMarketData[] = [
   {
-    id: "MD_2024_W3_dubai_jumeirah",
-    area_id: "dubai_jumeirah",
-    date: "2024-01-22",
-    property_transactions: 28,
-    avg_transaction_value: 3800000,
-    new_constructions: 5,
-    landscape_service_demand: 85,
-    seasonal_trends: {
-      winter_demand: 95,
-      summer_demand: 45,
-      peak_months: ["November", "December", "January", "February", "March"],
-    },
-    competitor_activity: 68,
-    material_costs: {
-      plants: 15.5,
-      irrigation: 12.8,
-      lighting: 18.2,
-      maintenance: 22.1,
-    },
+    id: "notif_002",
+    type: "property_sale",
+    title_ar: "🏡 بيع أرض سكنية في الراشدية",
+    title_en: "🏡 Residential Land Sale in Al Rashidiya",
+    description_ar: "أرض بمساحة 800 متر مربع، موقع ممتاز، قريبة من الخدمات",
+    description_en: "800 sqm land, excellent location, close to amenities",
+    coordinates: { lat: 25.3421, lng: 55.4652 },
+    area_id: "al_rashidiya_sharjah",
+    opportunity_score: 88,
+    property_value: 1800000,
+    plot_size: 800,
+    created_at: "2024-01-15T08:15:00Z",
+    source: "SharjahRera",
+    urgency_level: "medium",
+    tags: ["hot_zone", "growing_area", "land_sale"],
   },
 ];
 
-// Helper Functions
-export const getAreasByEmirate = (emirate: string): UAEArea[] => {
-  return uaeAreasData.filter((area) => area.emirate === emirate);
-};
+// Helper functions for database operations
+export class KXCityDB {
+  static async getAreasByEmirate(emirate: string): Promise<UAEArea[]> {
+    if (emirate === "all") {
+      return UAE_AREAS_DATA;
+    }
+    return UAE_AREAS_DATA.filter((area) => area.emirate === emirate);
+  }
 
-export const getActiveProjectsByArea = (areaId: string): LiveProject[] => {
-  return liveProjectsData.filter(
-    (project) => project.area_id === areaId && project.status !== "completed",
-  );
-};
-
-export const getHighOpportunityNotifications = (): SmartNotification[] => {
-  return smartNotificationsData
-    .filter(
-      (notification) =>
-        notification.opportunity_score >= 80 && !notification.is_processed,
+  static async getHighOpportunityAreas(limit: number = 10): Promise<UAEArea[]> {
+    return UAE_AREAS_DATA.filter(
+      (area) =>
+        area.landscape_potential === "high" &&
+        area.competition_level !== "high",
     )
-    .sort((a, b) => b.opportunity_score - a.opportunity_score);
-};
+      .sort(
+        (a, b) =>
+          b.interested_clients +
+          b.active_projects -
+          (a.interested_clients + a.active_projects),
+      )
+      .slice(0, limit);
+  }
 
-export const calculateAreaPotential = (areaId: string): number => {
-  const area = uaeAreasData.find((a) => a.id === areaId);
-  const activeProjects = getActiveProjectsByArea(areaId).length;
-  const notifications = smartNotificationsData.filter(
-    (n) => n.area_id === areaId,
-  ).length;
+  static async searchAreas(
+    query: string,
+    language: "ar" | "en" = "en",
+  ): Promise<UAEArea[]> {
+    const searchField = language === "ar" ? "name_ar" : "name_en";
+    return UAE_AREAS_DATA.filter((area) =>
+      area[searchField].toLowerCase().includes(query.toLowerCase()),
+    );
+  }
 
-  if (!area) return 0;
+  static async getAreaById(areaId: string): Promise<UAEArea | null> {
+    return UAE_AREAS_DATA.find((area) => area.id === areaId) || null;
+  }
 
-  const baseScore =
-    area.landscape_potential === "high"
-      ? 80
-      : area.landscape_potential === "medium"
-        ? 60
-        : 40;
-  const projectBonus = Math.min(activeProjects * 5, 15);
-  const opportunityBonus = Math.min(notifications * 3, 10);
+  static async getRecentNotifications(
+    limit: number = 20,
+  ): Promise<SmartNotification[]> {
+    return SAMPLE_NOTIFICATIONS.sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+    ).slice(0, limit);
+  }
 
-  return Math.min(baseScore + projectBonus + opportunityBonus, 100);
-};
+  static async getNotificationsByArea(
+    areaId: string,
+  ): Promise<SmartNotification[]> {
+    return SAMPLE_NOTIFICATIONS.filter((notif) => notif.area_id === areaId);
+  }
+
+  static async getHighScoreOpportunities(
+    minScore: number = 80,
+  ): Promise<SmartNotification[]> {
+    return SAMPLE_NOTIFICATIONS.filter(
+      (notif) => notif.opportunity_score >= minScore,
+    );
+  }
+
+  // AI-powered recommendations
+  static async getAIRecommendations(
+    companyId: string,
+    preferences: any,
+  ): Promise<{
+    recommended_areas: UAEArea[];
+    hot_opportunities: SmartNotification[];
+    market_insights: any;
+  }> {
+    const recommendedAreas = await this.getHighOpportunityAreas(5);
+    const hotOpportunities = await this.getHighScoreOpportunities(85);
+
+    const marketInsights = {
+      trending_emirates: ["ajman", "sharjah"],
+      growth_areas: ["al_nuaimiya", "al_rashidiya_sharjah"],
+      competition_gaps: UAE_AREAS_DATA.filter(
+        (area) => area.competition_level === "low",
+      ),
+      seasonal_trends: {
+        current_season: "winter",
+        demand_level: "high",
+        recommended_services: [
+          "pool_installation",
+          "outdoor_lighting",
+          "villa_garden",
+        ],
+      },
+    };
+
+    return {
+      recommended_areas: recommendedAreas,
+      hot_opportunities: hotOpportunities,
+      market_insights: marketInsights,
+    };
+  }
+}
+
+export default KXCityDB;

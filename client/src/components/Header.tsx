@@ -4,13 +4,19 @@ import { Button } from "@/components/ui/button";
 interface HeaderProps {
   language: "en" | "ar";
   onToggleLanguage: () => void;
-  appType?: "crypto" | "landscape";
+  appType?: "crypto" | "landscape" | "kxpath";
+  userRole?: "admin" | "client" | "premium" | "field" | "researcher";
+  onRoleChange?: (
+    role: "admin" | "client" | "premium" | "field" | "researcher",
+  ) => void;
 }
 
 export default function Header({
   language,
   onToggleLanguage,
   appType = "landscape",
+  userRole = "admin",
+  onRoleChange,
 }: HeaderProps) {
   const isRTL = language === "ar";
 
@@ -22,6 +28,10 @@ export default function Header({
     landscape: {
       en: "Welcome to KX PATH Dashboard",
       ar: "مرحباً بك في لوحة تحكم طريق الخبرة",
+    },
+    kxpath: {
+      en: "Welcome to KX PATH - Landscape AI-OS",
+      ar: "مرحباً بك في طريق الخبرة - نظام تشغيل المناظر الطبيعية الذكي",
     },
   };
 
@@ -42,7 +52,7 @@ export default function Header({
       {/* Welcome Section */}
       <div className={`${isRTL ? "text-right" : "text-left"}`}>
         <h2 className="text-2xl font-bold text-white mb-1">
-          {welcomeText[appType][language]}
+          {welcomeText[appType]?.[language] || welcomeText.landscape[language]}
         </h2>
         {appType === "landscape" && (
           <div
