@@ -16,6 +16,10 @@ import EpicSplash from "@/components/EpicSplash";
 import UAESmartMap from "@/components/UAESmartMap";
 import SmartUAERadar from "@/components/SmartUAERadar";
 import SmartOpportunityHunter from "@/components/SmartOpportunityHunter";
+import UAESmartMapEnhanced from "@/components/UAESmartMapEnhanced";
+import SmartOpportunityHunterEnhanced from "@/components/SmartOpportunityHunterEnhanced";
+import CompetitiveIntelligence from "@/components/CompetitiveIntelligence";
+import AIDesignStudioEnhanced from "@/components/AIDesignStudioEnhanced";
 
 export default function KXPathOS() {
   const [language, setLanguage] = useState<"en" | "ar">("ar");
@@ -39,7 +43,9 @@ export default function KXPathOS() {
       case "services":
         return <SmartServicesHub language={language} userRole={userRole} />;
       case "ai-hub":
-        return <AIDesignHub language={language} />;
+        return <AIDesignStudioEnhanced language={language} />;
+      case "ai-design":
+        return <AIDesignStudioEnhanced language={language} />;
       case "market-data":
         return <LiveMarketData language={language} />;
       case "smart-sniper":
@@ -47,9 +53,17 @@ export default function KXPathOS() {
       case "uae-radar":
         return <SmartUAERadar language={language} />;
       case "uae-map":
-        return <UAESmartMap language={language} />;
+        return <UAESmartMapEnhanced language={language} />;
+      case "smart-map":
+        return <UAESmartMapEnhanced language={language} />;
       case "opportunity-hunter":
-        return <SmartOpportunityHunter language={language} />;
+        return <SmartOpportunityHunterEnhanced language={language} />;
+      case "competitive-intel":
+        return <CompetitiveIntelligence language={language} />;
+      case "market-analysis":
+        return <LiveMarketData language={language} />;
+      case "real-time-monitoring":
+        return <SmartUAERadar language={language} />;
       case "projects":
         return <ProjectManagement language={language} userRole={userRole} />;
       case "live-feed":
