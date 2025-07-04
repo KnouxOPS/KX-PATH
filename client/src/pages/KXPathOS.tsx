@@ -19,6 +19,7 @@ import FieldTeamDashboard from "@/components/FieldTeamDashboard";
 
 import UAESmartMap from "@/components/UAESmartMap";
 import UAESmartTerrain from "@/components/UAESmartTerrain";
+import StunningUAEMap from "@/components/StunningUAEMap";
 import SmartUAERadar from "@/components/SmartUAERadar";
 import SmartOpportunityHunter from "@/components/SmartOpportunityHunter";
 import CompetitiveIntelligence from "@/components/CompetitiveIntelligence";
@@ -136,9 +137,9 @@ export default function KXPathOS() {
           </div>
         </div>
 
-        {/* Smart Terrain Map - Always at Top */}
+        {/* Stunning Interactive Map - Always at Top */}
         <div className="px-6 py-4">
-          <UAESmartTerrain language={language} />
+          <StunningUAEMap language={language} />
         </div>
 
         {/* Main Content Area */}
