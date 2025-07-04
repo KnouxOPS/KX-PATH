@@ -15,6 +15,8 @@ import {
   Zap,
   Building2,
   Globe,
+  Eye,
+  Search,
 } from "lucide-react";
 
 interface SidebarProps {
