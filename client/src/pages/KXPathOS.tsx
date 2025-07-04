@@ -20,6 +20,7 @@ import UAESmartMapEnhanced from "@/components/UAESmartMapEnhanced";
 import SmartOpportunityHunterEnhanced from "@/components/SmartOpportunityHunterEnhanced";
 import CompetitiveIntelligence from "@/components/CompetitiveIntelligence";
 import AIDesignStudioEnhanced from "@/components/AIDesignStudioEnhanced";
+import MarketAnalysisValidation from "@/components/MarketAnalysisValidation";
 
 export default function KXPathOS() {
   const [language, setLanguage] = useState<"en" | "ar">("ar");
@@ -61,7 +62,7 @@ export default function KXPathOS() {
       case "competitive-intel":
         return <CompetitiveIntelligence language={language} />;
       case "market-analysis":
-        return <LiveMarketData language={language} />;
+        return <MarketAnalysisValidation language={language} />;
       case "real-time-monitoring":
         return <SmartUAERadar language={language} />;
       case "projects":
