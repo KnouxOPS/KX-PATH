@@ -24,10 +24,13 @@ import SmartUAERadar from "@/components/SmartUAERadar";
 import SmartOpportunityHunter from "@/components/SmartOpportunityHunter";
 import CompetitiveIntelligence from "@/components/CompetitiveIntelligence";
 import MarketScanner from "@/components/MarketScanner";
+import SmartTerritoryIntelligence from "@/components/SmartTerritoryIntelligence";
+import NooxAIDesignHub from "@/components/NooxAIDesignHub";
+import MasterControlCenter from "@/components/MasterControlCenter";
 
 export default function KXPathOS() {
   const [language, setLanguage] = useState<"en" | "ar">("ar");
-  const [activeModule, setActiveModule] = useState("dashboard");
+  const [activeModule, setActiveModule] = useState("master-control");
 
   const [userRole, setUserRole] = useState<
     "admin" | "client" | "premium" | "field" | "researcher"
@@ -39,8 +42,23 @@ export default function KXPathOS() {
 
   // Show splash screen first
 
+  const handleModuleSelect = (moduleId: string) => {
+    setActiveModule(moduleId);
+  };
+
   const renderContent = () => {
     switch (activeModule) {
+      case "master-control":
+        return (
+          <MasterControlCenter
+            language={language}
+            onModuleSelect={handleModuleSelect}
+          />
+        );
+      case "smart-territory":
+        return <SmartTerritoryIntelligence language={language} />;
+      case "noox-ai":
+        return <NooxAIDesignHub language={language} />;
       case "services":
         return <SmartServicesHub language={language} userRole={userRole} />;
       case "ai-hub":
@@ -72,7 +90,12 @@ export default function KXPathOS() {
       case "field":
         return <FieldTeamDashboard language={language} />;
       default:
-        return <SmartKXDashboard language={language} userRole={userRole} />;
+        return (
+          <MasterControlCenter
+            language={language}
+            onModuleSelect={handleModuleSelect}
+          />
+        );
     }
   };
 
@@ -137,7 +160,7 @@ export default function KXPathOS() {
           </div>
         </div>
 
-        {/* Stunning Interactive Map - Always at Top */}
+        {/* Master Control Center - Always at Top */}
         <div className="px-6 py-4">
           <StunningUAEMap language={language} />
         </div>
