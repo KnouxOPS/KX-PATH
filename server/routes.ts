@@ -225,6 +225,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // AI Design Generation Routes
+  app.post("/api/ai/generate-design", isAuthenticated, generateDesign);
+  app.get("/api/ai/models", getAvailableModels);
+  app.get("/api/ai/presets", getScenePresets);
+  app.post("/api/ai/reset-usage", isAuthenticated, resetModelUsage);
+
   const httpServer = createServer(app);
   return httpServer;
 }
