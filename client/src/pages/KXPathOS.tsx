@@ -16,7 +16,7 @@ import FinanceContracts from "@/components/FinanceContracts";
 import PremiumZone from "@/components/PremiumZone";
 import ResearcherHub from "@/components/ResearcherHub";
 import FieldTeamDashboard from "@/components/FieldTeamDashboard";
-import EpicSplash from "@/components/EpicSplash";
+
 import UAESmartMap from "@/components/UAESmartMap";
 import UAESmartTerrain from "@/components/UAESmartTerrain";
 import SmartUAERadar from "@/components/SmartUAERadar";
