@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import KnoxDesignGenerator from "@/components/KnoxDesignGenerator";
 
 interface AIDesignStudioEnhancedProps {
   language: "en" | "ar";
@@ -259,7 +260,7 @@ const translations = {
     minimalist: "بسيط",
     luxury: "فاخر",
     sustainable: "مستدام",
-    concept: "مف��وم",
+    concept: "مفهوم",
     design: "تصميم",
     pricing: "تسعير",
     approved: "موافق عليه",
@@ -311,7 +312,7 @@ const translations = {
     securityFeatures: "ميزات الأمان",
     climateControl: "مناطق التحكم في المناخ",
     energyEfficient: "حلول موفرة للطاقة",
-    rainwaterHarvesting: "حصاد مياه الأمطار",
+    rainwaterHarvesting: "ح��اد مياه الأمطار",
     solarPowered: "ميزات تعمل بالطاقة الشمسية",
     nativeSpecies: "أنواع النباتات المحلية",
     xerophyticGarden: "تصميم حديقة جافة",
@@ -1075,125 +1076,8 @@ export default function AIDesignStudioEnhanced({
         </div>
       )}
 
-      {/* Tools Tab */}
-      {activeTab === "tools" && (
-        <div className="space-y-6">
-          {/* KnoxPlants - Plant Recommendations */}
-          <div className="bg-white/10 backdrop-blur-xl rounded-xl p-6 border border-white/20">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-              <TreePine className="w-6 h-6 text-green-400" />
-              {t.knoxPlants} - {t.plantRecommendations}
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {samplePlants.map((plant, index) => (
-                <div
-                  key={index}
-                  className={`bg-white/5 rounded-lg p-4 border transition-all cursor-pointer ${
-                    selectedPlants.includes(plant.name_en)
-                      ? "border-emerald-400 bg-emerald-500/10"
-                      : "border-white/10 hover:border-white/20"
-                  }`}
-                  onClick={() => {
-                    setSelectedPlants((prev) =>
-                      prev.includes(plant.name_en)
-                        ? prev.filter((p) => p !== plant.name_en)
-                        : [...prev, plant.name_en],
-                    );
-                  }}
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-medium">
-                        {language === "ar" ? plant.name_ar : plant.name_en}
-                      </h4>
-                      <Badge
-                        className={`${getCategoryColor(plant.category)} bg-white/10`}
-                      >
-                        {t[plant.category as keyof typeof t]}
-                      </Badge>
-                    </div>
-
-                    <div className="text-sm text-gray-300">
-                      <div className="italic">{plant.scientific_name}</div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div>
-                        <span className="text-gray-400">{t.waterNeeds}:</span>
-                        <span className="ml-1">
-                          {t[plant.water_needs as keyof typeof t]}
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-gray-400">
-                          {t.sunRequirement}:
-                        </span>
-                        <span className="ml-1">
-                          {
-                            t[
-                              plant.sun_requirement.replace(
-                                "_",
-                                "",
-                              ) as keyof typeof t
-                            ]
-                          }
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 flex-wrap">
-                      {plant.uae_native && (
-                        <Badge className="bg-green-500/20 text-green-400 text-xs">
-                          {t.uaeNative}
-                        </Badge>
-                      )}
-                      {plant.drought_tolerant && (
-                        <Badge className="bg-yellow-500/20 text-yellow-400 text-xs">
-                          {t.droughtTolerant}
-                        </Badge>
-                      )}
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm">
-                        <span className="text-green-400 font-semibold">
-                          {plant.price_per_unit} {t.aed}
-                        </span>
-                        <span className="text-gray-400 ml-1">/ unit</span>
-                      </div>
-                      <div className="text-sm text-gray-300">
-                        Qty: {plant.quantity_needed}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex gap-4 mt-6">
-              <Button
-                onClick={() =>
-                  setSelectedPlants(samplePlants.map((p) => p.name_en))
-                }
-                className="bg-emerald-600 hover:bg-emerald-700"
-              >
-                {t.selectAll}
-              </Button>
-              <Button
-                onClick={() => setSelectedPlants([])}
-                className="bg-gray-600 hover:bg-gray-700"
-              >
-                {t.clearAll}
-              </Button>
-              <Button className="bg-blue-600 hover:bg-blue-700">
-                <Sparkles className="w-4 h-4 mr-2" />
-                {t.applyRecommendations}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Tools Tab - KnoxDesign Generator */}
+      {activeTab === "tools" && <KnoxDesignGenerator language={language} />}
 
       {/* Project Details Modal */}
       {selectedProject && (
